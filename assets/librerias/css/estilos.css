@@ -1,0 +1,43 @@
+#fondo,#reproducir,#principal{
+  height: 100vh;
+}
+#reproducir{
+  overflow-y: scroll;
+}
+#contenido{
+  overflow-y: scroll;
+}
+body{
+  overflow-y: hidden;
+}
+.card{
+  height: 94%;
+}
+.mitad{
+  width: 50%;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  margin: 20px !important;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 50px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #26c23b;
+}
+@media screen and (max-width: 768px) {
+  body{
+    overflow-y: scroll;
+  }
+  .mitad{
+    width: 90%;
+  }
+}
