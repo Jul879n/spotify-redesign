@@ -1,8 +1,8 @@
 jQuery(document).ready(function ($) {
   $("#tema-blanco").click(function () {
-    $("#reproducir").removeClass("tema-oscuro tema-amoled");
+    $("#izquierda").removeClass("tema-oscuro tema-amoled");
     $("#principal").removeClass("tema-oscuro tema-amoled");
-    $("#reproducir").addClass("tema-blanco");
+    $("#izquierda").addClass("tema-blanco");
     $("#principal").addClass("tema-blanco");
     $("#menu").find(".bg-white").addClass("bg-dark").removeClass("bg-white");
     $("#menu")
@@ -17,9 +17,9 @@ jQuery(document).ready(function ($) {
     $("#confirmar").removeClass("disabled");
   });
   $("#tema-oscuro").click(function () {
-    $("#reproducir").removeClass("tema-blanco tema-amoled");
+    $("#izquierda").removeClass("tema-blanco tema-amoled");
     $("#principal").removeClass("tema-blanco tema-amoled");
-    $("#reproducir").addClass("tema-oscuro");
+    $("#izquierda").addClass("tema-oscuro");
     $("#principal").addClass("tema-oscuro");
     $("#menu").find(".bg-dark").addClass("bg-white").removeClass("bg-dark");
     $("#menu").addClass("vidrio").removeClass("border-light transparente");
@@ -35,16 +35,16 @@ jQuery(document).ready(function ($) {
     $("#confirmar").removeClass("disabled");
   });
   $("#tema-amoled").click(function () {
-    $("#reproducir").removeClass("tema-blanco tema-oscuro");
+    $("#izquierda").removeClass("tema-blanco tema-oscuro");
     $("#principal").removeClass("tema-blanco tema-oscuro");
-    $("#reproducir").addClass("tema-amoled");
+    $("#izquierda").addClass("tema-amoled");
     $("#principal").addClass("tema-amoled");
     $("#menu").find(".bg-dark").addClass("bg-white").removeClass("bg-dark");
     $("#menu")
       .find(".text-white")
       .addClass("text-dark")
       .removeClass("text-white");
-    $("#menu").removeClass("vidrio").addClass("border-light transparente");
+    $("#menu").removeClass("vidrio").addClass("border-light negro");
     $(".tema-amoled").find(".card").addClass("border-light");
     $(".tema-amoled .tema")
       .find(".text-dark")
@@ -56,14 +56,14 @@ jQuery(document).ready(function ($) {
     $("#selector-tema").remove();
   });
   // Obtener la canción y configurar la fuente del reproductor de audio
-  var cancion = $("#reproducir .song");
+  var cancion = $("#izquierda .song");
   var audio = $("#cancion");
   var source = audio.find("source");
 
   // Declarar una variable para llevar el registro de la canción actual
   var cancionActual = 0;
 
-  // Funciones para cargar y reproducir la canción actual
+  // Funciones para cargar y izquierda la canción actual
   function cargarCancion() {
     var cancionActualElement = $(".song").eq(cancionActual % $(".song").length);
     var src = cancionActualElement.attr("data-src");
@@ -86,7 +86,7 @@ jQuery(document).ready(function ($) {
     });
   }
 
-  function reproducirCancion() {
+  function izquierdaCancion() {
     audio[0].play();
     $(".play")
       .find(".fa-circle-play")
@@ -102,7 +102,7 @@ jQuery(document).ready(function ($) {
       cancionActual = 0;
     }
     cargarCancion();
-    reproducirCancion();
+    izquierdaCancion();
   });
 
   // Manejar el evento de clic en el botón de siguiente
@@ -113,13 +113,13 @@ jQuery(document).ready(function ($) {
       cancionActual = 0;
     }
     cargarCancion();
-    reproducirCancion();
+    izquierdaCancion();
   });
 
   // Manejar el evento de clic en el botón de reproducción
   $(".play").on("click", function () {
     if (audio[0].paused) {
-      reproducirCancion();
+      izquierdaCancion();
     } else {
       audio[0].pause();
       $(".play")
@@ -135,16 +135,16 @@ jQuery(document).ready(function ($) {
     var tiempoActual = audio[0].currentTime;
 
     // Actualizar el tiempo actual y la duración
-    $("#reproducir #tiempo-actual").html(formatTime(tiempoActual));
-    $("#reproducir #duracion").html(formatTime(duracion));
+    $("#izquierda #tiempo-actual").html(formatTime(tiempoActual));
+    $("#izquierda #duracion").html(formatTime(duracion));
 
     // Actualizar la barra de progreso
     var porcentaje = (tiempoActual / duracion) * 100;
-    $("#reproducir #tiempo-reproduccion").val(porcentaje);
+    $("#izquierda #tiempo-reproduccion").val(porcentaje);
   });
 
   // Manejar el evento de cambio en la barra de progreso
-  $("#reproducir #tiempo-reproduccion").on("input", function () {
+  $("#izquierda #tiempo-reproduccion").on("input", function () {
     var porcentaje = $(this).val();
     var duracion = audio[0].duration;
 
@@ -171,7 +171,45 @@ jQuery(document).ready(function ($) {
   $("form").on("submit", function (event) {
     event.preventDefault();
   });
-  $(".nombre-artista").click(function() {
+  $(".nombre-artista").click(function () {
     $("#artista").removeClass("no-ver");
+    $.get(
+      "https://localhost/spotify-redesign/privacy-policy/?id=2",
+      function (data, status) {
+        $("#artista .card-body").html(data);
+      }
+    );
+  });
+  //menu responsive
+  var movil = false; // variable global para almacenar el estado de la vista
+
+  function updateMenuLayout() {
+    if ($(window).width() < 768) {
+      if (!movil) {
+        $("#menu .card-body")
+          .removeClass("d-flex")
+          .find(".ms-2")
+          .addClass("mt-2 mb-3")
+          .removeClass("ms-2 me-2");
+        movil = true;
+      }
+    } else {
+      if (movil) {
+        $("#menu .card-body")
+          .addClass("d-flex")
+          .find(".mt-2")
+          .removeClass("mt-2 mb-3")
+          .addClass("ms-2 me-2");
+        movil = false;
+      }
+    }
+  }
+  // Actualizar el diseño del menú al cargar la página
+  $(document).ready(function () {
+    updateMenuLayout();
+  });
+  // Actualizar el diseño del menú al cambiar el tamaño de la ventana
+  $(window).resize(function () {
+    updateMenuLayout();
   });
 });

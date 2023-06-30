@@ -28,36 +28,6 @@
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'spotify-template'); ?></a>
 
 		<header id="masthead" class="site-header">
-			<div id="selector-tema">
-				<div class="container h-100">
-					<div class="row h-100 mt-5 align-items-center">
-						<div class="col-12 col-sm-4">
-							<div id="tema-blanco" class="card cajas-temas">
-								<div class="card-body">
-									<h5 class="card-title">Claro</h5>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-4">
-							<div id="tema-oscuro" class="card cajas-temas">
-								<div class="card-body">
-									<h5 class="card-title">Oscuro</h5>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-4">
-							<div id="tema-amoled" class="card cajas-temas">
-								<div class="card-body">
-									<h5 class="card-title">Amoled</h5>
-								</div>
-							</div>
-						</div>
-						<div class="col-12">
-							<button id="confirmar" class="disabled btn btn-primary">Confirmar</button>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
 				<div class="offcanvas-header">
 					<h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>

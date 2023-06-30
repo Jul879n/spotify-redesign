@@ -1,9 +1,9 @@
 #fondo,
-#reproducir
+#izquierda
 {
   height: 100vh;
 }
-#reproducir{
+#izquierda{
   overflow-y: scroll;
 }
 #principal
@@ -41,7 +41,7 @@ body
   background-color: #000000 !important;
 }
 
-#reproducir .card
+#izquierda #reproductor
 {
   height: 94%;
 }
@@ -94,10 +94,6 @@ body
   height: 100vh;
   width: 100%;
 }
-.transparente
-{
-  background-color: transparent !important;
-}
 .vidrio{
   /* From https://css.glass */
 background: rgba(255, 255, 255, 0.19) !important;
@@ -121,26 +117,16 @@ border: 1px solid rgba(255, 255, 255, 0.3) !important;
   top: 53px;
   right: 23px;
 }
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background-color: gray;
+.negro{
+  background-color: #000000;
 }
 .no-ver{
   display: none;
 }
-.progress-bar::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  background-color: aqua;
-  border-radius: 50%;
-  cursor: pointer;
-}
+
 @media screen and (max-width: 768px)
 {
-  #fondo, #reproducir {
+  #fondo, #izquierda {
     height: 100%;
   }
   body
@@ -168,5 +154,9 @@ border: 1px solid rgba(255, 255, 255, 0.3) !important;
 #reproductor-2
 {
   height: 30%;
+}
+#menu {
+  top: 42%;
+  right: 10px;
 }
 }
