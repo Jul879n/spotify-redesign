@@ -174,7 +174,7 @@ jQuery(document).ready(function ($) {
   $(".nombre-artista").click(function () {
     $("#artista").removeClass("no-ver");
     $.get(
-      "https://laraya.laboratoriodiseno.cl/spotify-redesign/privacy-policy/?id=2",
+      "https://laraya.laboratoriodiseno.cl/spotify-redesign/politica-privacidad/",
       function (data, status) {
         $("#artista .card-body").html(data);
       }
