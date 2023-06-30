@@ -13,7 +13,7 @@
 
 #reproductor-2
 {
-  height: 12vh;
+  height: 16vh;
 }
 
 #contenido
@@ -41,11 +41,14 @@ body
   background-color: #000000 !important;
 }
 
-.card
+#reproducir .card
 {
   height: 94%;
 }
-
+#contenido
+{
+  height: 94%;
+}
 .mitad
 {
   width: 50%;
@@ -91,12 +94,49 @@ body
   height: 100vh;
   width: 100%;
 }
+.transparente
+{
+  background-color: transparent !important;
+}
+.vidrio{
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0.19) !important;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+backdrop-filter: blur(5px) !important;
+-webkit-backdrop-filter: blur(5px) !important;
+border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+.circulo{
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+}
 #menu{
-  width: 50px;
   position: fixed;
   z-index: 99;
   top: 53px;
   right: 23px;
+}
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: gray;
+}
+.no-ver{
+  display: none;
+}
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background-color: aqua;
+  border-radius: 50%;
+  cursor: pointer;
 }
 @media screen and (max-width: 768px)
 {
@@ -124,5 +164,9 @@ body
 {
   height: 100%;
   width: 100%;
+}
+#reproductor-2
+{
+  height: 30%;
 }
 }
