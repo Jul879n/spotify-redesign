@@ -18,10 +18,6 @@ jQuery(document).ready(function ($) {
   $(window).resize(function () {
     console.log("se cambio");
     grid();
-    $(".efecto-texto").glitch({
-      chars: "!<>-_\\/[]{}—=+*^?#________",
-      charTime: 10,
-    });
   });
   // llamada inicial a la función
   grid();
