@@ -56,9 +56,9 @@
 	</div>
 	<div id="fondo" class="container-fluid ">
 		<div class="row grid-stack">
-			<div id="card-menu" class="grid-stack-item col-12" gs-w="3">
+			<div id="card-menu" class="grid-stack-item col-12 gs-4" gs-w="3">
 				<div id="menu" class="grid-stack-item-content card tema bg-secondary">
-					<div class="card-body d-flex justify-content-between align-items-center placeholder">
+					<div class="card-body pt-0 pb-0 d-flex justify-content-between align-items-center placeholder">
 						<span class="spotify transparente"><i class="fa-brands fa-spotify"></i></span>
 						<div class="d-flex transparente">
 							<button class="ms-2 me-2 btn bg-dark circulo  d-flex justify-content-center align-items-center"><i class=" text-white fa-solid fa-angle-left"></i></button>
@@ -72,7 +72,7 @@
 			</div>
 			<div id="registrate" class="grid-stack-item placeholder-glow col-12" gs-w="9">
 				<div class="grid-stack-item-content card tema bg-registrate">
-					<div class="card-body placeholder d-flex align-items-center justify-content-between">
+					<div class="card-body pt-0 pb-0 placeholder d-flex align-items-center justify-content-between">
 						<div class="d-flex flex-column w-75">
 							<span class="transparente text-dark nombre-artista efecto-texto text-uppercase">Muestra de spotify</span>
 							<span class="transparente text-dark nombre-artista efecto-texto">Registrate para disfrutar de canciones y podcasts sin limites, con anuncios ocasionales. No hace falta tarjeta de crédito.</span>

@@ -115,6 +115,11 @@ body
 .bg-registrate{
   background: #1DB054;
 }
+.gs-4 > .grid-stack-item { height: 25% }
+.gs-4 > .grid-stack-item[gs-h="2"] { height: 50% }
+.gs-4 > .grid-stack-item[gs-h="3"] { height: 75% }
+.gs-4 > .grid-stack-item[gs-h="4"] { height: 100% }
+
 @media screen and (max-width: 768px)
 {
   #card-menu{
