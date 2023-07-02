@@ -1,59 +1,127 @@
 jQuery(document).ready(function ($) {
+  var algo = GridStack.init();
+  function grid() {
+    if ($(window).width() > 768) {
+        $("#fondo .row").addClass("grid-stack");
+        $("#card-menu, #registrate, #izquierda, #principal, #artista").addClass("grid-stack-item").removeClass("mt-2 mb-3");
+        console.log("volvio");
+        algo.enable();
+    } else if ($(window).width() < 768) {
+      if ($("#fondo .row").hasClass("grid-stack") || $("#fondo .row").attr("style")) {
+        $("#fondo .row").removeClass("grid-stack").removeAttr("style");
+        $("#card-menu, #registrate, #izquierda, #principal, #artista").removeClass("grid-stack-item").addClass("mt-2 mb-3");
+        console.log("funciono");
+        algo.disable();
+      }
+    }
+  }
+  $(window).resize(function () {
+    console.log("se cambio");
+    grid();
+    $(".efecto-texto").glitch({
+      chars: "!<>-_\\/[]{}—=+*^?#________",
+      charTime: 10,
+    });
+  });
+  // llamada inicial a la función
+  grid();
+
+  $("#selector-tema .card").click(function () {
+    $(this)
+      .addClass("shadow bg-body-secondary seleccionado")
+      .css("z-index", "100000")
+      .animate({ width: "300px" }, 500);
+  });
+
   $("#tema-blanco").click(function () {
     $("#izquierda").removeClass("tema-oscuro tema-amoled");
+    $("#card-menu").removeClass("tema-oscuro tema-amoled");
     $("#principal").removeClass("tema-oscuro tema-amoled");
-    $("#izquierda").addClass("tema-blanco");
-    $("#principal").addClass("tema-blanco");
-    $("#menu").find(".bg-white").addClass("bg-dark").removeClass("bg-white");
-    $("#menu")
+    $("#artista").removeClass("tema-oscuro tema-amoled");
+    $("#izquierda")
+      .addClass("tema-blanco")
+      .find(".text-white")
+      .addClass("text-dark")
+      .removeClass("text-white");
+    $("#principal")
+      .addClass("tema-blanco")
+      .find(".text-white")
+      .addClass("text-dark")
+      .removeClass("text-white");
+    $("#card-menu")
+      .addClass("tema-blanco")
       .find(".text-dark")
       .addClass("text-white")
       .removeClass("text-dark");
-    $("#menu").addClass("vidrio").removeClass("border-light transparente");
-    $(".tema-blanco .tema")
+    $("#artista")
+      .addClass("tema-blanco")
       .find(".text-white")
       .addClass("text-dark")
       .removeClass("text-white");
+    $("*").find(".card").removeClass("border-light");
+    $("#card-menu")
+      .find(".bg-white")
+      .addClass("bg-dark")
+      .removeClass("bg-white");
+    $("#card-menu .spotify").removeClass("text-white");
     $("#confirmar").removeClass("disabled");
   });
+
   $("#tema-oscuro").click(function () {
     $("#izquierda").removeClass("tema-blanco tema-amoled");
     $("#principal").removeClass("tema-blanco tema-amoled");
+    $("#card-menu").removeClass("tema-blanco tema-amoled");
+    $("#artista").removeClass("tema-blanco tema-amoled");
     $("#izquierda").addClass("tema-oscuro");
     $("#principal").addClass("tema-oscuro");
-    $("#menu").find(".bg-dark").addClass("bg-white").removeClass("bg-dark");
-    $("#menu").addClass("vidrio").removeClass("border-light transparente");
-    $("#menu")
-      .find(".text-white")
-      .addClass("text-dark")
-      .removeClass("text-white");
+    $("#artista").addClass("tema-oscuro");
+    $("*").find(".card").removeClass("border-light");
     $(".tema-oscuro .tema")
       .find(".text-dark")
       .addClass("text-white")
       .removeClass("text-dark");
-    $("#confirmar").removeClass("disabled");
+    $("#card-menu").addClass("tema-oscuro");
+    $("#menu").find(".bg-dark").addClass("bg-white").removeClass("bg-dark");
+    $("#menu")
+      .find(".text-white")
+      .addClass("text-dark")
+      .removeClass("text-white");
+    $("#menu .spotify").addClass("text-white");
     $("#confirmar").removeClass("disabled");
   });
   $("#tema-amoled").click(function () {
     $("#izquierda").removeClass("tema-blanco tema-oscuro");
     $("#principal").removeClass("tema-blanco tema-oscuro");
+    $("#card-menu").removeClass("tema-blanco tema-oscuro");
+    $("#artista").removeClass("tema-blanco tema-oscuro");
     $("#izquierda").addClass("tema-amoled");
+    $("#card-menu").addClass("tema-amoled");
     $("#principal").addClass("tema-amoled");
-    $("#menu").find(".bg-dark").addClass("bg-white").removeClass("bg-dark");
-    $("#menu")
-      .find(".text-white")
-      .addClass("text-dark")
-      .removeClass("text-white");
-    $("#menu").removeClass("vidrio").addClass("border-light negro");
+    $("#artista").addClass("tema-amoled");
     $(".tema-amoled").find(".card").addClass("border-light");
     $(".tema-amoled .tema")
       .find(".text-dark")
       .addClass("text-white")
       .removeClass("text-dark");
+    $("#menu").find(".bg-dark").addClass("bg-white").removeClass("bg-dark");
+    $("#menu")
+      .find(".text-white")
+      .addClass("text-dark")
+      .removeClass("text-white");
+    $("#menu .spotify").addClass("text-white");
+    $("#menu").addClass("border-light");
     $("#confirmar").removeClass("disabled");
   });
   $("#confirmar").click(function () {
-    $("#selector-tema").remove();
+    $("#selector-tema").fadeOut("1000", function () {
+      $(this).remove();
+      $("*").removeClass("transparente");
+      $("*").removeClass("placeholder");
+      $(".efecto-texto").glitch({
+        chars: "!<>-_\\/[]{}—=+*^?#________",
+        charTime: 10,
+      });
+    });
   });
   // Obtener la canción y configurar la fuente del reproductor de audio
   var cancion = $("#izquierda .song");
@@ -177,39 +245,49 @@ jQuery(document).ready(function ($) {
       "https://laraya.laboratoriodiseno.cl/spotify-redesign/politica-privacidad/",
       function (data, status) {
         $("#artista .card-body").html(data);
+        $("html, body").animate(
+          {
+            scrollTop: $("#artista").offset().top,
+          },
+          1000
+        );
       }
     );
   });
-  //menu responsive
-  var movil = false; // variable global para almacenar el estado de la vista
-
-  function updateMenuLayout() {
-    if ($(window).width() < 768) {
-      if (!movil) {
-        $("#menu .card-body")
-          .removeClass("d-flex")
-          .find(".ms-2")
-          .addClass("mt-2 mb-3")
-          .removeClass("ms-2 me-2");
-        movil = true;
-      }
-    } else {
-      if (movil) {
-        $("#menu .card-body")
-          .addClass("d-flex")
-          .find(".mt-2")
-          .removeClass("mt-2 mb-3")
-          .addClass("ms-2 me-2");
-        movil = false;
-      }
-    }
-  }
-  // Actualizar el diseño del menú al cargar la página
-  $(document).ready(function () {
-    updateMenuLayout();
+  // Obtenemos la altura y anchura de la ventana del navegador
+  var alturaVentana = $(window).height();
+  var anchoVentana = $(window).width();
+  // Obtenemos la altura y anchura del elemento que queremos centrar
+  var alturaSelector = $("#selector-tema").outerHeight();
+  var anchoSelector = $("#selector-tema").outerWidth();
+  // Calculamos la posición en la que debemos mover el elemento para centrarlo
+  var margenSuperior = (alturaVentana - alturaSelector) / 2;
+  var margenIzquierda = (anchoVentana - anchoSelector) / 2;
+  // Movemos el elemento al centro de la pantalla
+  $("#selector-tema").css({
+    "margin-top": margenSuperior,
+    "margin-left": margenIzquierda,
   });
-  // Actualizar el diseño del menú al cambiar el tamaño de la ventana
-  $(window).resize(function () {
-    updateMenuLayout();
+  $("#formm").click(function () {
+    $.get(
+      "https://localhost/spotify-redesign/wp-login.php?action=register&id=registerform"
+    )
+      .done(function (data) {
+        var registroForm = $("<div>")
+          .append($.parseHTML(data))
+          .find("#registerform")[0].outerHTML;
+        $("#registro").append(registroForm);
+
+        // Verificar si el registro se ha realizado correctamente
+        if (data.includes("Registro completado con éxito")) {
+          alert("El registro se ha realizado correctamente");
+        } else {
+          alert("Ha ocurrido un error al realizar el registro");
+        }
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("Error en la petición AJAX: " + textStatus, errorThrown);
+        alert("Ha ocurrido un error en la petición AJAX");
+      });
   });
 });

@@ -1,28 +1,6 @@
-#fondo,
-#izquierda
-{
-  height: 100vh;
-}
-#izquierda{
-  overflow-y: scroll;
-}
-#principal
-{
-  height: 85vh;
-}
 
-#reproductor-2
-{
-  height: 16vh;
-}
-
-#contenido
-{
-  overflow-y: scroll;
-}
 body
 {
-  overflow-y: hidden;
   background-color: #000000;
 }
 
@@ -31,9 +9,16 @@ body
   background-color: antiquewhite !important;
 }
 
+.letras-blancas
+{
+  color: antiquewhite !important;
+}
+#selector-tema .card{
+  cursor: pointer !important;
+}
 .tema-oscuro .tema
 {
-  background-color: #0f0d0d !important;
+  background-color: #24403B !important;
 }
 
 .tema-amoled .tema
@@ -41,17 +26,15 @@ body
   background-color: #000000 !important;
 }
 
-#izquierda #reproductor
-{
-  height: 94%;
-}
-#contenido
-{
-  height: 94%;
-}
+
 .mitad
 {
   width: 50%;
+}
+
+.spotify
+{
+  font-size: 40px;
 }
 
 *::-webkit-scrollbar
@@ -83,26 +66,24 @@ body
 
 #selector-tema
 {
+  border-radius: 30px;
   z-index: 1000;
-  position: absolute;
-  /* From https://css.glass */
+  position: fixed;
   background: rgba(255, 255, 255, 0.68);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(11.9px);
   -webkit-backdrop-filter: blur(11.9px);
   border: 1px solid rgba(255, 255, 255, 0.42);
-  height: 100vh;
-  width: 100%;
+  height: 500px;
+  width: 50%;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
 }
-.vidrio{
-  /* From https://css.glass */
-background: rgba(255, 255, 255, 0.19) !important;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
-backdrop-filter: blur(5px) !important;
--webkit-backdrop-filter: blur(5px) !important;
-border: 1px solid rgba(255, 255, 255, 0.3) !important;
-}
-.circulo{
+
+.circulo
+{
   width: 40px;
   height: 40px;
   border-radius: 100%;
@@ -111,52 +92,55 @@ border: 1px solid rgba(255, 255, 255, 0.3) !important;
   -ms-border-radius: 100%;
   -o-border-radius: 100%;
 }
-#menu{
-  position: fixed;
-  z-index: 99;
-  top: 53px;
-  right: 23px;
-}
-.negro{
+
+.negro
+{
   background-color: #000000;
 }
-.no-ver{
+
+.no-ver
+{
   display: none;
 }
 
+.transparente
+{
+  visibility: hidden;
+}
+
+.btn-reproductor
+{
+  width: 50px;
+}
+.bg-registrate{
+  background: #1DB054;
+}
 @media screen and (max-width: 768px)
 {
-  #fondo, #izquierda {
-    height: 100%;
+  #card-menu{
+    position: sticky;
+    top: 10px;
+    z-index: 1000;
   }
+  .grid-stack-item {
+    /* Anula los estilos de Gridstack.js */
+    width: 100%;
+    height: 300px !important;
+}
+
   body
   {
     overflow-y: scroll;
   }
+
   .mitad
   {
     width: 90%;
   }
 
-  #selector-temas
-  {
-    height: max-content !important;
-  }
-  #menu{
-    top: 10px;
-    right: 10px;
-  }
   #selector-tema
-{
-  height: 100%;
-  width: 100%;
-}
-#reproductor-2
-{
-  height: 30%;
-}
-#menu {
-  top: 42%;
-  right: 10px;
-}
+  {
+    height: auto;
+    width: 100%;
+  }
 }
