@@ -2,14 +2,25 @@ jQuery(document).ready(function ($) {
   var algo = GridStack.init();
   function grid() {
     if ($(window).width() > 768) {
-        $("#fondo .row").addClass("grid-stack");
-        $("#card-menu, #registrate, #izquierda, #principal, #artista").addClass("grid-stack-item").removeClass("mt-2 mb-3");
-        console.log("volvio");
-        algo.enable();
+      $("#fondo .row").addClass("grid-stack");
+      $(
+        "#card-menu, #registrate, #izquierda, #principal, #artista, #info-cancion, #footer"
+      )
+        .addClass("grid-stack-item")
+        .removeClass("mt-2 mb-3");
+      console.log("volvio");
+      algo.enable();
     } else if ($(window).width() < 768) {
-      if ($("#fondo .row").hasClass("grid-stack") || $("#fondo .row").attr("style")) {
+      if (
+        $("#fondo .row").hasClass("grid-stack") ||
+        $("#fondo .row").attr("style")
+      ) {
         $("#fondo .row").removeClass("grid-stack").removeAttr("style");
-        $("#card-menu, #registrate, #izquierda, #principal, #artista").removeClass("grid-stack-item").addClass("mt-2 mb-3");
+        $(
+          "#card-menu, #registrate, #izquierda, #principal, #artista, #info-cancion, #footer"
+        )
+          .removeClass("grid-stack-item")
+          .addClass("mt-2 mb-3");
         console.log("funciono");
         algo.disable();
       }
@@ -21,7 +32,7 @@ jQuery(document).ready(function ($) {
   });
   // llamada inicial a la función
   grid();
-
+//temas
   $("#selector-tema .card").click(function () {
     $(this)
       .addClass("shadow bg-body-secondary seleccionado")
@@ -30,82 +41,16 @@ jQuery(document).ready(function ($) {
   });
 
   $("#tema-blanco").click(function () {
-    $("#izquierda").removeClass("tema-oscuro tema-amoled");
-    $("#card-menu").removeClass("tema-oscuro tema-amoled");
-    $("#principal").removeClass("tema-oscuro tema-amoled");
-    $("#artista").removeClass("tema-oscuro tema-amoled");
-    $("#izquierda")
-      .addClass("tema-blanco")
-      .find(".text-white")
-      .addClass("text-dark")
-      .removeClass("text-white");
-    $("#principal")
-      .addClass("tema-blanco")
-      .find(".text-white")
-      .addClass("text-dark")
-      .removeClass("text-white");
-    $("#card-menu")
-      .addClass("tema-blanco")
-      .find(".text-dark")
-      .addClass("text-white")
-      .removeClass("text-dark");
-    $("#artista")
-      .addClass("tema-blanco")
-      .find(".text-white")
-      .addClass("text-dark")
-      .removeClass("text-white");
-    $("*").find(".card").removeClass("border-light");
-    $("#card-menu")
-      .find(".bg-white")
-      .addClass("bg-dark")
-      .removeClass("bg-white");
-    $("#card-menu .spotify").removeClass("text-white");
+    $("body").removeClass("tema-oscuro tema-amoled").addClass("tema-blanco");
     $("#confirmar").removeClass("disabled");
   });
 
   $("#tema-oscuro").click(function () {
-    $("#izquierda").removeClass("tema-blanco tema-amoled");
-    $("#principal").removeClass("tema-blanco tema-amoled");
-    $("#card-menu").removeClass("tema-blanco tema-amoled");
-    $("#artista").removeClass("tema-blanco tema-amoled");
-    $("#izquierda").addClass("tema-oscuro");
-    $("#principal").addClass("tema-oscuro");
-    $("#artista").addClass("tema-oscuro");
-    $("*").find(".card").removeClass("border-light");
-    $(".tema-oscuro .tema")
-      .find(".text-dark")
-      .addClass("text-white")
-      .removeClass("text-dark");
-    $("#card-menu").addClass("tema-oscuro");
-    $("#menu").find(".bg-dark").addClass("bg-white").removeClass("bg-dark");
-    $("#menu")
-      .find(".text-white")
-      .addClass("text-dark")
-      .removeClass("text-white");
-    $("#menu .spotify").addClass("text-white");
+    $("body").removeClass("tema-claro tema-amoled").addClass("tema-oscuro");
     $("#confirmar").removeClass("disabled");
   });
   $("#tema-amoled").click(function () {
-    $("#izquierda").removeClass("tema-blanco tema-oscuro");
-    $("#principal").removeClass("tema-blanco tema-oscuro");
-    $("#card-menu").removeClass("tema-blanco tema-oscuro");
-    $("#artista").removeClass("tema-blanco tema-oscuro");
-    $("#izquierda").addClass("tema-amoled");
-    $("#card-menu").addClass("tema-amoled");
-    $("#principal").addClass("tema-amoled");
-    $("#artista").addClass("tema-amoled");
-    $(".tema-amoled").find(".card").addClass("border-light");
-    $(".tema-amoled .tema")
-      .find(".text-dark")
-      .addClass("text-white")
-      .removeClass("text-dark");
-    $("#menu").find(".bg-dark").addClass("bg-white").removeClass("bg-dark");
-    $("#menu")
-      .find(".text-white")
-      .addClass("text-dark")
-      .removeClass("text-white");
-    $("#menu .spotify").addClass("text-white");
-    $("#menu").addClass("border-light");
+    $("body").removeClass("tema-oscuro tema-claro").addClass("tema-amoled");
     $("#confirmar").removeClass("disabled");
   });
   $("#confirmar").click(function () {
@@ -113,9 +58,8 @@ jQuery(document).ready(function ($) {
       $(this).remove();
       $("*").removeClass("transparente");
       $("*").removeClass("placeholder");
-      $(".efecto-texto").glitch({
-        chars: "!<>-_\\/[]{}—=+*^?#________",
-        charTime: 10,
+      $(".efecto-texto").codex({
+        duration: 500,
       });
     });
   });
@@ -235,6 +179,56 @@ jQuery(document).ready(function ($) {
   $("form").on("submit", function (event) {
     event.preventDefault();
   });
+  //navegacion
+  var contenidoAnterior = "";
+  var inicioCancion = "";
+  var clickLoop = false;
+  var clickCancion = false;
+  //navegacion playlist
+  $(document).on("click", ".loop", function (event) {
+    clickLoop = true;
+    contenidoAnterior = $("#contenido .card-body").html();
+    event.preventDefault();
+    var href = $(this).attr("href");
+    $("#contenido .card-body").fadeOut("fast", function () {
+      $(this).load(href + " .playlists", function () {
+        $(this).fadeIn("fast");
+      });
+    });
+  });
+  //navegacion artista
+  $(document).on("click", ".enlace-cancion", function (event) {
+    clickCancion = true;
+    inicioCancion = $("#info-cancion .card-body").html();
+    event.preventDefault();
+    var href = $(this).attr("href");
+    $("#info-cancion .card-body").fadeOut("fast", function () {
+      $(this).load(href + " .canciones", function () {
+        $(this).fadeIn("fast");
+      });
+      $("html, body").animate(
+        {
+          scrollTop: $("#info-cancion").offset().top,
+        },
+        500
+      );
+    });
+  });
+
+  $("#volver").click(function () {
+    if (clickLoop){
+      $("#contenido .card-body").fadeOut("fast", function () {
+        $(this).html(contenidoAnterior).fadeIn("fast"); // Restaura el contenido anterior
+      });
+    }
+    if (clickCancion){
+      $("#info-cancion .card-body").fadeOut("fast", function () {
+        $(this).html(inicioCancion).fadeIn("fast"); // Restaura el contenido anterior
+      });
+    }
+   
+  });
+
   $(".nombre-artista").click(function () {
     $("#artista").removeClass("no-ver");
     $.get(
@@ -264,26 +258,11 @@ jQuery(document).ready(function ($) {
     "margin-top": margenSuperior,
     "margin-left": margenIzquierda,
   });
-  $("#formm").click(function () {
-    $.get(
-      "https://localhost/spotify-redesign/wp-login.php?action=register&id=registerform"
-    )
-      .done(function (data) {
-        var registroForm = $("<div>")
-          .append($.parseHTML(data))
-          .find("#registerform")[0].outerHTML;
-        $("#registro").append(registroForm);
-
-        // Verificar si el registro se ha realizado correctamente
-        if (data.includes("Registro completado con éxito")) {
-          alert("El registro se ha realizado correctamente");
-        } else {
-          alert("Ha ocurrido un error al realizar el registro");
-        }
-      })
-      .fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("Error en la petición AJAX: " + textStatus, errorThrown);
-        alert("Ha ocurrido un error en la petición AJAX");
-      });
-  });
+  //girar discos
+  function girar() {
+    $(".no-hay").animate({ rotate: "360deg" }, 90000);
+    girar();
+  }
+  girar();
+  
 });

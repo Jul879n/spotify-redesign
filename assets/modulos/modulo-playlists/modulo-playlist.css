@@ -1,0 +1,22 @@
+.card-alto{
+    height: 260px !important;
+}
+.tema-blanco .tema .tarjeta{
+    background-color: #A1904F !important;
+}
+.tema-blanco .tema .tarjeta .text-tema-titulo {
+    color: #F3ECCD !important;
+}
+.tema-oscuro .tema .tarjeta{
+    background-color: #473974 !important;
+}
+.tema-oscuro .tema .tarjeta .text-tema-titulo {
+    color: #5CDB85 !important;
+}
+.tema-amoled .tema .tarjeta{
+    background-color: #000 !important;
+    border: 1px solid #5CDB85 !important;
+}
+.tema-amoled .tema .tarjeta .text-tema-titulo {
+    color: #5CDB85 !important;
+}

@@ -11,21 +11,39 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'spotify-template' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'spotify-template' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'spotify-template' ), 'spotify-template', '<a href="http://underscores.me/">Julián Araya</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+<footer id="colophon" class="card-body placeholder container">
+	<div class="row transparente">
+		<div class="col-12 col-sm-2 efecto-texto">
+		<?php if (is_active_sidebar('footer1')):
+							dynamic_sidebar('footer1');
+						endif; ?>
+		</div>
+		<div class="col-12 col-sm-2 efecto-texto">
+		<?php if (is_active_sidebar('footer2')):
+							dynamic_sidebar('footer2');
+						endif; ?>
+		</div>
+		<div class="col-12 col-sm-2 efecto-texto">
+		<?php if (is_active_sidebar('footer3')):
+							dynamic_sidebar('footer3');
+						endif; ?>
+		</div>
+		<div class="col-12 col-sm-3">
+		</div>
+		<div class="col-12 col-sm-3">
+			<div class="d-flex justify-content-around">
+				<a class="bg-tema rounded-circle boton d-flex justify-content-center align-items-center" href="#"><i class="text-tema fa-brands fa-instagram fs-4"></i></a>
+				<a class="bg-tema rounded-circle boton d-flex justify-content-center align-items-center" href="#"><i class="text-tema fa-brands fa-twitter fs-4"></i></a>
+				<a class="bg-tema rounded-circle boton d-flex justify-content-center align-items-center" href="#"><i class="text-tema fa-brands fa-facebook fs-4"></i></a>
+			</div>
+		</div>
+		
+		<div class="col-12 efecto-texto text-tema">
+		<span>© 2023 Spotify AB</span>
+		</div>
+	</div>
+</footer>
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

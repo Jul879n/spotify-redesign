@@ -15,11 +15,11 @@ function js_script()
         wp_register_script('gridstack', 'https://cdnjs.cloudflare.com/ajax/libs/gridstack.js/8.3.0/gridstack-all.min.js', true);
         wp_enqueue_script('slick', get_bloginfo('template_directory') . '/assets/librerias/js/slick.min.js', array('jquery'), true);
         wp_register_script('mi-js', get_bloginfo('template_directory') . '/assets/librerias/js/mis-scripts.js', array('jquery'), true);
-        wp_register_script('glitch', get_bloginfo('template_directory') . '/assets/librerias/js/glitch.js', array('jquery'), true);
+        wp_register_script('codex', get_bloginfo('template_directory') . '/assets/librerias/js/jquery.codex.js', array('jquery'), true);
         /*encolamos los JS*/
         wp_enqueue_script('bootstrap-js');
         wp_enqueue_script('slick');
-        wp_enqueue_script('glitch');
+        wp_enqueue_script('codex');
         wp_enqueue_script('mi-js');
         wp_enqueue_script('jquery-ui');
         wp_enqueue_script('gridstack');
