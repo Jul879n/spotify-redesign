@@ -71,7 +71,7 @@
 			</div>
 			<div id="registrate" class="grid-stack-item placeholder-glow col-12" gs-w="9">
 				<div class="grid-stack-item-content card tema border-0">
-					<div class="card-body pt-0 pb-0 placeholder d-flex align-items-center justify-content-between">
+					<div class="card-body placeholder d-flex align-items-center justify-content-between">
 						<div class="d-flex flex-column w-75">
 							<span class="transparente text-tema nombre-artista efecto-texto text-uppercase">Muestra de spotify</span>
 							<span class="transparente text-tema nombre-artista efecto-texto">Registrate para disfrutar de canciones y podcasts sin limites, con anuncios ocasionales. No hace falta tarjeta de crédito.</span>
