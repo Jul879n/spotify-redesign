@@ -1,7 +1,7 @@
 <script>
     function incrustar_hoja_estilos_playlists() {
         var hoja_estilos_url =
-            '<?php echo get_site_url() . '/wp-content/themes/spotify-redesign/assets/modulos/modulo-playlists/modulo-playlist.css'; ?>';
+            '<?php echo get_site_url() . '/wp-content/themes/spotify-template/assets/modulos/modulo-playlists/modulo-playlist.css'; ?>';
         var hoja_estilos = document.createElement('link');
         hoja_estilos.rel = 'stylesheet';
         hoja_estilos.href = hoja_estilos_url;
