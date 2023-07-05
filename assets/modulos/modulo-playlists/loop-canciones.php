@@ -38,29 +38,25 @@
 				<div class="container-fluid p-0">
 					<div class="row mt-3 lista">
 						<div class="col-1 encimera">
-							<span><?php echo $numero; ?></span>
-							<button class="btn visibilidad" onclick="var audio = document.getElementById('<?php echo get_the_title() ?>play'); if (audio.paused) { audio.play(); this.innerHTML = '<i class=\'fa-solid fa-pause fs-3\'></i>'; } else { audio.pause(); this.innerHTML = '<i class=\'fa-solid fa-play fs-3\'></i>'; }"><i class="fa-solid fa-play fs-3"></i> </button>
-							</span>
+							<span class="text-tema"><?php echo $numero; ?></span>
 						</div>
-						<div class="col-1 no-ver">
+						<div class="col-1">
 							<img class="img-miniatura" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>" alt="..">
 						</div>
 						<div class="col-11 col-sm-3" id="playList">
-							<audio class="oculto" id="<?php echo get_the_title() ?>play" tabindex="0" controls="">
-								<source src="<?php the_field('enlace_cancion'); ?>">
-							</audio>
-							<a class="enlace-cancion" href="<?php the_permalink() ?>"><?php echo get_the_title() ?></a>
+						<span class="song" data-src="<?php the_field('enlace_cancion'); ?>" data-title="<?php echo get_the_title() ?>" data-artista="<?php the_field('perfil'); ?>" data-img="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>"></span>
+							<a class="enlace-cancion text-tema-titulo" href="<?php the_permalink() ?>"><?php echo get_the_title() ?></a>
 							<br>
-							<a class="perfil" href="#"><?php the_field('perfil'); ?></a>
+							<a class="perfil text-tema" href="#"><?php the_field('perfil'); ?></a>
 						</div>
-						<div class="col-2 no-ver">
-							<span><?php the_field('album'); ?></span>
+						<div class="col-2">
+							<span class="text-tema"><?php the_field('album'); ?></span>
 						</div>
-						<div class="col-3 no-ver">
-							<span><?php echo the_content() ?></span>
+						<div class="col-3">
+							<span class="text-tema"><?php echo the_content() ?></span>
 						</div>
-						<div class="col-2 no-ver">
-							<span><?php the_excerpt() ?></span>
+						<div class="col-2">
+							<span class="text-tema"><?php the_excerpt() ?></span>
 						</div>
 					</div>
 				</div>

@@ -12,8 +12,8 @@
 
 <!-- contenido playlists -->
 <div class="seccion-enfoque container">
-<h2 class="text-tema-titulo efecto-texto">Enfoque</h2>
-    <div id="carrusel-playlist">
+<h2 class="text-tema-titulo efecto-texto">Playlists de Spotify</h2>
+    <div id="carrusel-spotify">
        
         <?php $active = true;
         $temp = $wp_query;

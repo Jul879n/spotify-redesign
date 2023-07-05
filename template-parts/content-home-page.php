@@ -10,7 +10,7 @@
 
 ?>
 
-<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<div id="post-<?php the_ID(); ?>" <?php post_class('user-select-none'); ?>>
 	<div id="selector-tema">
 		<div class="container h-100">
 			<div class="row h-100 align-items-center">
@@ -73,20 +73,22 @@
 				<div class="grid-stack-item-content card tema border-0">
 					<div class="card-body placeholder d-flex align-items-center justify-content-between">
 						<div class="d-flex flex-column w-75">
-							<span class="transparente text-tema nombre-artista efecto-texto text-uppercase">Muestra de spotify</span>
-							<span class="transparente text-tema nombre-artista efecto-texto">Registrate para disfrutar de canciones y podcasts sin limites, con anuncios ocasionales. No hace falta tarjeta de crédito.</span>
+							<span class="transparente text-tema nombre-artista efecto-texto text-uppercase"><?php echo esc_html( get_field('titulo') ); ?></span>
+							<span class="transparente text-tema nombre-artista efecto-texto"><?php echo esc_html( get_field('info') ); ?></span>
 						</div>
-						<span><button class="registrarte btn bg-tema transparente efecto-texto">Registrarte gratis</button></span>
-							
+						<span><button class="registrarte btn bg-tema transparente efecto-texto"><?php echo esc_html( get_field('texto_boton') ); ?></button></span>
+
 					</div>
 				</div>
 			</div>
 			<div id="izquierda" class="grid-stack-item placeholder-glow col-12" gs-w="4" gs-h="5">
 				<div id="reproductor" class="grid-stack-item-content card border-0 tema bg-secondary text-tema">
 					<div id="info-reproduccion" class="card-body d-flex flex-column align-items-center justify-content-center placeholder">
-						<img class="mitad rounded-3 placeholder transparente" src="" alt="">
-						<span class="song" style="display: none;" data-src="https://laraya.laboratoriodiseno.cl/spotify/wp-content/uploads/2023/05/Tjarnheden-Farsjon.mp3" data-title="Canción 1"></span>
-						<span class="song" style="display: none;" data-src="https://radios.liberaturadio.org/mestiza.ogg" data-title="Canción 2"></span>
+						<?php
+						$image = get_field('imagen_cancion');
+						if (!empty($image)) : ?>
+							<img class="mitad rounded-3 placeholder transparente" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+						<?php endif; ?>
 						<audio style="display: none;" id="cancion" controls>
 							<source src="" type="audio/mp3">
 						</audio>
@@ -114,7 +116,8 @@
 			<div id="principal" class="grid-stack-item placeholder-glow col-12" gs-w="8" gs-h="5">
 				<div id="contenido" class="grid-stack-item-content card border-0 tema bg-secondary text-tema ">
 					<div class="card-body placeholder container-fluid position-relative">
-					<?php include get_template_directory() . '/assets/modulos/modulo-playlists/loop-enfoque.php'; ?>
+						<?php include get_template_directory() . '/assets/modulos/modulo-playlists/loop-enfoque.php'; ?>
+						<?php include get_template_directory() . '/assets/modulos/modulo-playlists/loop-playlists-spotify.php'; ?>
 					</div>
 				</div>
 			</div>
@@ -132,9 +135,9 @@
 					</div>
 				</div>
 			</div>
-			<div id="footer" class="grid-stack-item placeholder-glow col-12" gs-w="12" gs-h="3" gs-no-resize="true" gs-no-move="true" gs-locked="true">
+			<div id="footer" class="grid-stack-item placeholder-glow col-12" gs-w="12" gs-h="3" gs-no-resize="true" gs-locked="true">
 				<div class="grid-stack-item-content card border-0 tema bg-secondary">
-				<?php get_footer(); ?>
+					<?php get_footer(); ?>
 				</div>
 			</div>
 		</div>

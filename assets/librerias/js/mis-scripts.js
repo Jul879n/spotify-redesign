@@ -32,7 +32,7 @@ jQuery(document).ready(function ($) {
   });
   // llamada inicial a la función
   grid();
-//temas
+  //temas
   $("#selector-tema .card").click(function () {
     $(this)
       .addClass("shadow bg-body-secondary seleccionado")
@@ -63,118 +63,6 @@ jQuery(document).ready(function ($) {
       });
     });
   });
-  // Obtener la canción y configurar la fuente del reproductor de audio
-  var cancion = $("#izquierda .song");
-  var audio = $("#cancion");
-  var source = audio.find("source");
-
-  // Declarar una variable para llevar el registro de la canción actual
-  var cancionActual = 0;
-
-  // Funciones para cargar y izquierda la canción actual
-  function cargarCancion() {
-    var cancionActualElement = $(".song").eq(cancionActual % $(".song").length);
-    var src = cancionActualElement.attr("data-src");
-    var title = cancionActualElement.attr("data-title");
-    source.attr("src", src);
-    cancion.html(title);
-    audio[0].load();
-
-    // Establecer el valor inicial de la duración en "00:00"
-    $("#duracion").html("00:00");
-
-    // Establecer el valor inicial del rango en 0
-    $("#tiempo-reproduccion").val(0);
-
-    // Actualizar la barra de progreso
-    audio[0].addEventListener("loadedmetadata", function () {
-      var duracion = Math.floor(audio[0].duration);
-      $("#duracion").html(formatTime(duracion));
-      $("#tiempo-reproduccion").attr("max", duracion);
-    });
-  }
-
-  function izquierdaCancion() {
-    audio[0].play();
-    $(".play")
-      .find(".fa-circle-play")
-      .addClass("fa-pause")
-      .removeClass("fa-circle-play");
-  }
-
-  // Manejar el evento de finalización de la canción actual
-  audio[0].addEventListener("ended", function () {
-    if (cancionActual < $(".song").length - 1) {
-      cancionActual++;
-    } else {
-      cancionActual = 0;
-    }
-    cargarCancion();
-    izquierdaCancion();
-  });
-
-  // Manejar el evento de clic en el botón de siguiente
-  $(".siguiente").on("click", function () {
-    if (cancionActual < $(".song").length - 1) {
-      cancionActual++;
-    } else {
-      cancionActual = 0;
-    }
-    cargarCancion();
-    izquierdaCancion();
-  });
-
-  // Manejar el evento de clic en el botón de reproducción
-  $(".play").on("click", function () {
-    if (audio[0].paused) {
-      izquierdaCancion();
-    } else {
-      audio[0].pause();
-      $(".play")
-        .find(".fa-pause")
-        .addClass("fa-circle-play")
-        .removeClass("fa-pause");
-    }
-  });
-
-  // Actualizar la barra de progreso en función del tiempo de reproducción
-  audio.on("timeupdate", function () {
-    var duracion = audio[0].duration;
-    var tiempoActual = audio[0].currentTime;
-
-    // Actualizar el tiempo actual y la duración
-    $("#izquierda #tiempo-actual").html(formatTime(tiempoActual));
-    $("#izquierda #duracion").html(formatTime(duracion));
-
-    // Actualizar la barra de progreso
-    var porcentaje = (tiempoActual / duracion) * 100;
-    $("#izquierda #tiempo-reproduccion").val(porcentaje);
-  });
-
-  // Manejar el evento de cambio en la barra de progreso
-  $("#izquierda #tiempo-reproduccion").on("input", function () {
-    var porcentaje = $(this).val();
-    var duracion = audio[0].duration;
-
-    // Actualizar la posición de reproducción
-    audio[0].currentTime = (porcentaje / 100) * duracion;
-  });
-
-  // Función de ayuda para formatear el tiempo en formato mm:ss
-  function formatTime(segundos) {
-    var minutos = Math.floor(segundos / 60);
-    var segundosRestantes = Math.floor(segundos % 60);
-
-    return (
-      minutos.toString().padStart(2, "0") +
-      ":" +
-      segundosRestantes.toString().padStart(2, "0")
-    );
-  }
-
-  // Cargar la primera canción
-  cargarCancion();
-
   //evitar formulario
   $("form").on("submit", function (event) {
     event.preventDefault();
@@ -193,6 +81,7 @@ jQuery(document).ready(function ($) {
     $("#contenido .card-body").fadeOut("fast", function () {
       $(this).load(href + " .playlists", function () {
         $(this).fadeIn("fast");
+        cargarCancion();
       });
     });
   });
@@ -216,17 +105,17 @@ jQuery(document).ready(function ($) {
   });
 
   $("#volver").click(function () {
-    if (clickLoop){
+    if (clickLoop) {
       $("#contenido .card-body").fadeOut("fast", function () {
         $(this).html(contenidoAnterior).fadeIn("fast"); // Restaura el contenido anterior
       });
     }
-    if (clickCancion){
+    if (clickCancion) {
       $("#info-cancion .card-body").fadeOut("fast", function () {
         $(this).html(inicioCancion).fadeIn("fast"); // Restaura el contenido anterior
       });
     }
-   
+
   });
 
   $(".nombre-artista").click(function () {
@@ -261,8 +150,113 @@ jQuery(document).ready(function ($) {
   //girar discos
   function girar() {
     $(".no-hay").animate({ rotate: "360deg" }, 90000);
-    girar();
   }
   girar();
-  
+  //carrusel playlist
+  $("#carrusel-playlist").slick({
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: true,
+    dots: false,
+    pauseOnHover: true,
+    infinite: true,
+    edgeFriction: 1,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          autoplay: true,
+          autoplaySpeed: 4000,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          autoplay: true,
+          autoplaySpeed: 4000,
+        },
+      },
+      {
+        breakpoint: 375,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 4000,
+        },
+      },
+    ],
+  });
+  //carrusel spotify
+  $("#carrusel-spotify").slick({
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: true,
+    dots: false,
+    pauseOnHover: true,
+    infinite: true,
+    edgeFriction: 1,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          autoplay: true,
+          autoplaySpeed: 4000,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          autoplay: true,
+          autoplaySpeed: 4000,
+        },
+      },
+      {
+        breakpoint: 375,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 4000,
+        },
+      },
+    ],
+  });
+  $(".slick-next").html('<i class="fs-3 text-tema  fa-solid fa-angle-right"></i>');
+  $(".slick-prev").html('<i class="fs-3 text-tema  fa-solid fa-angle-left"></i>');
+
+  //reproductor
+  var posicion = 0;
+  function cargarCancion() {
+    var audioCancion = $('#contenido .song').eq(posicion).data('src');
+    var nombre = $('#contenido .song').eq(posicion).data('title');
+    var artista = $('#contenido .song').eq(posicion).data('artista');
+    var imagen = $('#contenido .song').eq(posicion).data('img');
+
+    // Colocar los valores en los elementos correspondientes del reproductor de audio
+    $('#info-reproduccion img').attr('src', imagen);
+    $('#info-reproduccion audio source').attr('src', audioCancion);
+    $('#info-reproduccion #titulo-cancion').text(nombre);
+    $('#info-reproduccion #artista-cancion').text(artista);
+  }
+  $(".siguiente").click(function () {
+    posicion++;
+    cargarCancion();
+  });
+  $(".atras").click(function () {
+    posicion--;
+    cargarCancion();
+  });
 });
