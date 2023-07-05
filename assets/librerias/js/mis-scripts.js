@@ -85,22 +85,28 @@ jQuery(document).ready(function ($) {
       });
     });
   });
-  //navegacion artista
+  //navegacion cancion
   $(document).on("click", ".enlace-cancion", function (event) {
     clickCancion = true;
     inicioCancion = $("#info-cancion .card-body").html();
     event.preventDefault();
     var href = $(this).attr("href");
-    $("#info-cancion .card-body").fadeOut("fast", function () {
-      $(this).load(href + " .canciones", function () {
-        $(this).fadeIn("fast");
+    $.get(href,function(data,status){
+      var id = $(data).find('.type-canciones').attr("id");
+      href = href.substr(0, href.length - 1);
+      var enlace = href+"?id="+id;
+      $.get(enlace,function(ya,status){
+        var elemento = $(ya).find('[id="' + id + '"]');
+        $("#info-cancion .card-body").html(elemento);
+        $(".type-canciones").addClass("w-100");
+        $("#info-cancion .efecto-texto").codex({
+          duration: 800,
+        });
+        // Hacer scroll hasta #info-cancion
+        $('html, body').animate({
+          scrollTop: $("#info-cancion").offset().top
+        }, 10);
       });
-      $("html, body").animate(
-        {
-          scrollTop: $("#info-cancion").offset().top,
-        },
-        500
-      );
     });
   });
 
