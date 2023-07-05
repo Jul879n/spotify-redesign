@@ -256,6 +256,9 @@ jQuery(document).ready(function ($) {
     $('#info-reproduccion audio source').attr('src', audioCancion);
     $('#info-reproduccion #titulo-cancion').text(nombre);
     $('#info-reproduccion #artista-cancion').text(artista);
+    $("#info-reproduccion .efecto-texto").codex({
+      duration: 680,
+    });
   }
   $(".siguiente").click(function () {
     posicion++;
