@@ -37,11 +37,11 @@
 				<?php $numero += 1; ?>
 				<div class="container-fluid p-0">
 					<div class="row mt-3 lista">
-						<div class="col-1 encimera">
+						<div class="col-1 encimera no-visible">
 							<span class="text-tema"><?php echo $numero; ?></span>
 						</div>
-						<div class="col-1">
-							<img class="img-miniatura" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>" alt="..">
+						<div class="col-1 p-0">
+							<img class="img-miniatura w-100" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>" alt="..">
 						</div>
 						<div class="col-11 col-sm-3" id="playList">
 						<span class="song" data-src="<?php the_field('enlace_cancion'); ?>" data-title="<?php echo get_the_title() ?>" data-artista="<?php the_field('perfil'); ?>" data-img="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>"></span>
@@ -49,13 +49,13 @@
 							<br>
 							<a class="perfil text-tema" href="<?php echo get_home_url(); ?>/artistas/<?php echo str_replace(' ', '-', get_field('perfil')); ?>"><?php the_field('perfil'); ?></a>
 						</div>
-						<div class="col-2">
+						<div class="col-2 no-visible">
 							<span class="text-tema"><?php the_field('album'); ?></span>
 						</div>
-						<div class="col-3">
+						<div class="col-3 no-visible">
 							<span class="text-tema"><?php echo the_content() ?></span>
 						</div>
-						<div class="col-2">
+						<div class="col-2 no-visible">
 							<span class="text-tema"><?php the_excerpt() ?></span>
 						</div>
 					</div>

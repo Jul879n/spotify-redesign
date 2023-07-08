@@ -164,9 +164,6 @@ a
 {
   background-color: transparent;
 }
-.h-100{
-  height: 100%;
-}
 *::-webkit-scrollbar-thumb
 {
   background-color: #ffffff9d;
@@ -179,10 +176,6 @@ a
 }
 .verificado{
   fill: #0c67d3;
-}
-.h-100
-{
-  height: 100% !important;
 }
 
 #selector-tema
@@ -292,7 +285,14 @@ a
 {
   content: '';
 }
-
+@media screen and (max-width: 999px){
+  .no-visible{
+    display: none;
+  }
+  .he-100{
+    height: 100%;
+  }
+}
 @media screen and (max-width: 768px)
 {
   .titulo-cancion
@@ -309,7 +309,7 @@ a
   #card-menu
   {
     position: sticky;
-    top: 10px;
+    top: 0px;
     z-index: 1000;
   }
 
@@ -334,5 +334,8 @@ a
   {
     height: auto;
     width: 100%;
+  }
+  .no-visible{
+    display: none;
   }
 }
