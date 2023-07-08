@@ -11,7 +11,7 @@
 </script>
 
 <!-- contenido playlists -->
-<div class="seccion-canciones container-fluid mb-5" id="canciones" style="position: relative;">
+<div class="seccion-canciones-artista container-fluid mb-5" id="canciones" style="position: relative;">
 	<div class="row">
 		<?php
 		$numero = 0;
@@ -24,7 +24,7 @@
 		$args = array(
 			'tax_query' => array(
 				array(
-					'taxonomy' => 'nombre-playlist',
+					'taxonomy' => 'perfil',
 					'field' => 'slug',
 					'terms' => $terms,
 				),
@@ -47,7 +47,7 @@
 						<span class="song" data-src="<?php the_field('enlace_cancion'); ?>" data-title="<?php echo get_the_title() ?>" data-artista="<?php the_field('perfil'); ?>" data-img="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>"></span>
 							<a class="enlace-cancion text-tema-titulo" href="<?php the_permalink() ?>"><?php echo get_the_title() ?></a>
 							<br>
-							<a class="perfil text-tema" href="<?php echo get_home_url(); ?>/artistas/<?php echo str_replace(' ', '-', get_field('perfil')); ?>"><?php the_field('perfil'); ?></a>
+							<a class="perfil text-tema" href="#"><?php the_field('perfil'); ?></a>
 						</div>
 						<div class="col-2">
 							<span class="text-tema"><?php the_field('album'); ?></span>

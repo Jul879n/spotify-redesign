@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
   var algo = GridStack.init();
   function grid() {
-    if ($(window).width() > 768) {
+    if ($(window).width() > 999) {
       $("#fondo .row").addClass("grid-stack");
       $(
         "#card-menu, #registrate, #izquierda, #principal, #artista, #info-cancion, #footer"
@@ -10,7 +10,7 @@ jQuery(document).ready(function ($) {
         .removeClass("mt-2 mb-3");
       console.log("volvio");
       algo.enable();
-    } else if ($(window).width() < 768) {
+    } else if ($(window).width() < 999) {
       if (
         $("#fondo .row").hasClass("grid-stack") ||
         $("#fondo .row").attr("style")
@@ -70,6 +70,7 @@ jQuery(document).ready(function ($) {
   //navegacion
   var contenidoAnterior = "";
   var inicioCancion = "";
+  var inicioArtista = "";
   var clickLoop = false;
   var clickCancion = false;
   //navegacion playlist
@@ -91,11 +92,11 @@ jQuery(document).ready(function ($) {
     inicioCancion = $("#info-cancion .card-body").html();
     event.preventDefault();
     var href = $(this).attr("href");
-    $.get(href,function(data,status){
+    $.get(href, function (data, status) {
       var id = $(data).find('.type-canciones').attr("id");
       href = href.substr(0, href.length - 1);
-      var enlace = href+"?id="+id;
-      $.get(enlace,function(ya,status){
+      var enlace = href + "?id=" + id;
+      $.get(enlace, function (ya, status) {
         var elemento = $(ya).find('[id="' + id + '"]');
         $("#info-cancion .card-body").html(elemento);
         $(".type-canciones").addClass("w-100");
@@ -109,7 +110,30 @@ jQuery(document).ready(function ($) {
       });
     });
   });
-
+  //navegacion cancion
+  $(document).on("click", ".perfil", function (event) {
+    clickCancion = true;
+    inicioArtista = $("#artista .card-body").html();
+    event.preventDefault();
+    var href = $(this).attr("href");
+    $.get(href, function (data, status) {
+      var id = $(data).find('.type-artistas').attr("id");
+      href = href.substr(0, href.length - 1);
+      var enlace = href + "?id=" + id;
+      $.get(enlace, function (ya, status) {
+        var elemento = $(ya).find('[id="' + id + '"]');
+        $("#artista .card-body").html(elemento);
+        $(".type-artistas").addClass("w-100");
+        $("#artista .efecto-texto").codex({
+          duration: 800,
+        });
+        // Hacer scroll hasta #info-cancion
+        $('html, body').animate({
+          scrollTop: $("#artista").offset().top
+        }, 10);
+      });
+    });
+  });
   $("#volver").click(function () {
     if (clickLoop) {
       $("#contenido .card-body").fadeOut("fast", function () {
@@ -267,5 +291,8 @@ jQuery(document).ready(function ($) {
   $(".atras").click(function () {
     posicion--;
     cargarCancion();
+  });
+  $('.corazon').click(function () {
+    $(this).find('i').removeClass("fa-regular fa-heart").addClass("fa-solid fa-heart");
   });
 });

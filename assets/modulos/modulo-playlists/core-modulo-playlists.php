@@ -112,3 +112,43 @@ function nombre_playlist()
 
 }
 add_action('init', 'nombre_playlist');
+
+// Registrar el tipo de contenido personalizado para artistas
+function artistas_register()
+{
+
+	$labels = array(
+		'name' => _x('Artistas', 'Nombre general del tipo de contenido'),
+		'singular_name' => _x('Artista', 'Nombre singular del tipo de contenido'),
+		'add_new' => _x('Agregar artista', 'Agregar nuevo elemento'),
+		'add_new_item' => __('Agregar nuevo artista'),
+		'edit_item' => __('Editar artista'),
+		'new_item' => __('Nuevo artista'),
+		'view_item' => __('Ver artista'),
+		'search_items' => __('Buscar artistas'),
+		'not_found' =>  __('No se encontraron artistas'),
+		'not_found_in_trash' => __('No se encontraron artistas en la papelera'),
+		'parent_item_colon' => ''
+	);
+
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'publicly_queryable'    => true,
+		'show_ui' => true,
+		'query_var' => true,
+		'rewrite' => true,
+		'exclude_from_search'   => false,
+		'capability_type' => 'post',
+		'menu_icon'  => 'dashicons-admin-users',
+		'hierarchical' => false,
+		'menu_position' => null,
+		'supports' => array('title', 'thumbnail', 'excerpt', 'editor'),
+		'rewrite' => array('slug' => 'artistas', 'with_front' => false)
+	);
+
+	register_post_type('artistas', $args);
+}
+
+// Llamar a la función de registro del tipo de contenido personalizado para artistas
+add_action('init', 'artistas_register');
