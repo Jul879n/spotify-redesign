@@ -28,12 +28,12 @@
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'spotify-template'); ?></a>
 
 		<header id="masthead" class="site-header">
-			<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+			<div class="offcanvas offcanvas-end tema menu-offcanvas rounded-2" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
 				<div class="offcanvas-header">
-					<h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					<h5 class="offcanvas-title text-tema-titulo" id="offcanvasRightLabel">Offcanvas right</h5>
+					<button type="button" class="btn-close bg-tema" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 				</div>
-				<div class="offcanvas-body">
+				<div class="offcanvas-body text-tema">
 					...
 				</div>
 			</div>

@@ -137,7 +137,14 @@ a
   background-color: #5CDB85 !important;
   color: #000 !important;
 }
-
+.tema-amoled #registrate .tema
+{
+  background-color: #000 !important;
+}
+.tema-amoled #footer .tema
+{
+  background-color: #000 !important;
+}
 .tema-amoled .bg-tema .text-tema
 {
   color: #000 !important;
@@ -285,6 +292,32 @@ a
 {
   content: '';
 }
+.menu-offcanvas{
+  height: 95%;
+  top: 2% !important;
+  right: 20px !important;
+}
+.offcanvas-backdrop.show {
+  opacity: .9 !important;
+}
+.seleccion{
+  height: 100px !important;
+  width: 100px !important;
+  border-radius: 50% !important;
+}
+.seleccion:nth-of-type(1){
+  background-color: #F3ECCD;
+  border: 10px solid #A1904F;
+}
+.seleccion:nth-of-type(2){
+  background-color: #2A2933;
+  border: 10px solid #5CDB85;
+}
+.seleccion:nth-of-type(3){
+  background-color: #000;
+  border: 10px solid #1DB054;
+}
+
 @media screen and (max-width: 999px){
   .no-visible{
     display: none;

@@ -12,40 +12,15 @@
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('user-select-none'); ?>>
 	<div id="selector-tema">
-		<div class="container he-100">
-			<div class="row he-100 align-items-center">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
 				<h1>Selecciona un Tema</h1>
-				<div class="col-4 col-sm-4">
-					<div id="tema-blanco" class="card cajas-temas">
-						<div class="card-body">
-							<?php
-							$image = get_field('tema_claro');
-							if (!empty($image)) : ?>
-								<img class="card-img" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-							<?php endif; ?>
-						</div>
+				<div class="w-100 d-flex justify-content-around">
+					<div id="tema-blanco" class="cajas-temas seleccion">
 					</div>
-				</div>
-				<div class="col-4 col-sm-4">
-					<div id="tema-oscuro" class="card cajas-temas">
-						<div class="card-body">
-							<?php
-							$image = get_field('tema_oscuro');
-							if (!empty($image)) : ?>
-								<img class="card-img" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-							<?php endif; ?>
-						</div>
+					<div id="tema-oscuro" class="cajas-temas seleccion">
 					</div>
-				</div>
-				<div class="col-4 col-sm-4">
-					<div id="tema-amoled" class="card cajas-temas">
-						<div class="card-body">
-							<?php
-							$image = get_field('tema_amoled');
-							if (!empty($image)) : ?>
-								<img class="card-img" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-							<?php endif; ?>
-						</div>
+					<div id="tema-amoled" class="cajas-temas seleccion">
 					</div>
 				</div>
 				<div class="col-12">
