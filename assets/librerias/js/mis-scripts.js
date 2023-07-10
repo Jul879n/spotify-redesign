@@ -91,13 +91,13 @@ jQuery(document).ready(function ($) {
         var elemento = $(ya).find('[id="' + id + '"]');
         $("#info-cancion .card-body").html(elemento);
         $(".type-canciones").addClass("w-100");
-        $("#info-cancion .efecto-texto").codex({
-          duration: 800,
-        });
         // Hacer scroll hasta #info-cancion
         $('html, body').animate({
           scrollTop: $("#info-cancion").offset().top
         }, 10);
+        $("#info-cancion .efecto-texto").codex({
+          duration: 800,
+        });
       });
     });
   });
@@ -115,13 +115,13 @@ jQuery(document).ready(function ($) {
         var elemento = $(ya).find('[id="' + id + '"]');
         $("#artista .card-body").html(elemento);
         $(".type-artistas").addClass("w-100");
-        $("#artista .efecto-texto").codex({
-          duration: 800,
-        });
         // Hacer scroll hasta #info-cancion
         $('html, body').animate({
           scrollTop: $("#artista").offset().top
         }, 10);
+        $("#artista .efecto-texto").codex({
+          duration: 800,
+        });
       });
     });
   });
