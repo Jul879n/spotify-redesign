@@ -2,35 +2,51 @@
 //widget assets
 function spotify_widget() {
     register_sidebar( array(
-        'name'          => 'nav',
-        'id'            => 'nav0',
-        'before_widget' => '<div class="col-12 col-sm-1 navbar-nav m-0 no-ver">',
+        'name'          => 'navbar',
+        'id'            => 'navegacion',
+        'before_widget' => '<div>',
         'after_widget'  => '</div>',
         'before_title' => '<h3 class="titulo-menu-nav">', //a単adimos contenedores por titulo
         'after_title' => '</h3>' //cerramos los contenedores de titulo
     ) );
     register_sidebar( array(
-        'name'          => 'Menu footer 1',
+        'name'          => 'nav central',
+        'id'            => 'nav-central',
+        'before_widget' => '<div>',
+        'after_widget'  => '</div>',
+        'before_title' => '<h3 class="titulo-menu-nav">', //a単adimos contenedores por titulo
+        'after_title' => '</h3>' //cerramos los contenedores de titulo
+    ) );
+    register_sidebar( array(
+        'name'          => 'nav final',
+        'id'            => 'nav-final',
+        'before_widget' => '<div>',
+        'after_widget'  => '</div>',
+        'before_title' => '<h3 class="titulo-menu-nav">', //a単adimos contenedores por titulo
+        'after_title' => '</h3>' //cerramos los contenedores de titulo
+    ) );
+    register_sidebar( array(
+        'name'          => 'footer 1',
         'id'            => 'footer1',
-        'before_widget' => '<div>',
+        'before_widget' => '<div class="col-12 col-sm-3 mb-2">',
         'after_widget'  => '</div>',
-        'before_title' => '<h3 class="titulo-menu-nav">', //a単adimos contenedores por titulo
+        'before_title' => '<h3 class="text-tema">', //a単adimos contenedores por titulo
         'after_title' => '</h3>' //cerramos los contenedores de titulo
     ) );
     register_sidebar( array(
-        'name'          => 'Menu footer 2',
+        'name'          => 'footer 2',
         'id'            => 'footer2',
-        'before_widget' => '<div>',
+        'before_widget' => '<div class="col-12 col-sm-3 mb-2">',
         'after_widget'  => '</div>',
-        'before_title' => '<h3 class="titulo-menu-nav">', //a単adimos contenedores por titulo
+        'before_title' => '<h3 class="text-tema">', //a単adimos contenedores por titulo
         'after_title' => '</h3>' //cerramos los contenedores de titulo
     ) );
-     register_sidebar( array(
-        'name'          => 'Menu footer 3',
+    register_sidebar( array(
+        'name'          => 'footer 3',
         'id'            => 'footer3',
-        'before_widget' => '<div>',
+        'before_widget' => '<div class="col-12 col-sm-3 mb-2">',
         'after_widget'  => '</div>',
-        'before_title' => '<h3 class="titulo-menu-nav">', //a単adimos contenedores por titulo
+        'before_title' => '<h3 class="text-tema">', //a単adimos contenedores por titulo
         'after_title' => '</h3>' //cerramos los contenedores de titulo
     ) );
 }

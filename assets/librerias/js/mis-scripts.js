@@ -8,36 +8,26 @@ jQuery(document).ready(function ($) {
       )
         .addClass("grid-stack-item")
         .removeClass("mt-2 mb-3");
-      console.log("volvio");
       algo.enable();
     } else if ($(window).width() < 999) {
-      if (
-        $("#fondo .row").hasClass("grid-stack") ||
-        $("#fondo .row").attr("style")
+      if ($("#fondo .row").hasClass("grid-stack") || $("#fondo .row").attr("style")
       ) {
         $("#fondo .row").removeClass("grid-stack").removeAttr("style");
-        $(
-          "#card-menu, #registrate, #izquierda, #principal, #artista, #info-cancion, #footer"
-        )
-          .removeClass("grid-stack-item")
-          .addClass("mt-2 mb-3");
+        $("#card-menu, #registrate, #izquierda, #principal, #artista, #info-cancion, #footer").removeClass("grid-stack-item").addClass("mt-2 mb-3");
         console.log("funciono");
         algo.disable();
       }
     }
   }
   $(window).resize(function () {
-    console.log("se cambio");
     grid();
   });
   // llamada inicial a la función
   grid();
   //temas
-  $("#selector-tema .card").click(function () {
-    $(this)
-      .addClass("shadow bg-body-secondary seleccionado")
-      .css("z-index", "100000")
-      .animate({ width: "300px" }, 500);
+  $("#selector-tema .seleccion").click(function () {
+    $(".seleccion").removeClass("shadow op");
+    $(this).addClass("shadow op");
   });
 
   $("#tema-blanco").click(function () {
@@ -295,4 +285,34 @@ jQuery(document).ready(function ($) {
   $('.corazon').click(function () {
     $(this).find('i').removeClass("fa-regular fa-heart").addClass("fa-solid fa-heart");
   });
+//nav
+  $(".custom-logo").removeClass().addClass("w-75 mt-2")
+  $("#menu-nav").removeClass().addClass("navbar-nav m-0");
+  $("#menu-nav li").removeClass().addClass("nav-item");
+  $("#menu-nav li a").removeClass().addClass("nav-link text-tema");
+  $("#menu-nav li").eq(0).find("a").prepend('<i class="fa-solid fa-house tex-tema me-2"></i>');
+  $("#menu-nav li").eq(1).find("a").prepend('<i class="fa-solid fa-book text-tema me-2"></i>');
+  $("#menu-nav li").eq(2).find("a").prepend('<i class="fa-solid fa-square-xmark text-tema me-2"></i>');
+  $("#menu-nav li").eq(3).find("a").prepend('<i class="fa-solid fa-heart text-tema me-2"></i>');
+//nav central
+  $("#menu-nav-central").removeClass().addClass("navbar-nav m-0");
+  $("#menu-nav-central li").removeClass().addClass("nav-item");
+  $("#menu-nav-central li a").removeClass().addClass("nav-link text-tema");
+  $("#menu-nav-central li").eq(0).find("a").removeClass("text-tema").addClass("bg-tema btn w-50");
+  //nav final
+  $("#menu-nav-final").removeClass().addClass("navbar-nav m-0 flex-row row");
+  $("#menu-nav-final li").removeClass().addClass("nav-item col-6");
+  $("#menu-nav-final li a").removeClass().addClass("nav-link text-tema text-pequeno");
+//footer
+$("#menu-footer-1").removeClass().addClass("navbar-nav m-0");
+$("#menu-footer-1 li").removeClass().addClass("nav-item");
+$("#menu-footer-1 li a").removeClass().addClass("nav-link text-tema p-0");
+//footer 2
+$("#menu-footer-2").removeClass().addClass("navbar-nav m-0");
+$("#menu-footer-2 li").removeClass().addClass("nav-item");
+$("#menu-footer-2 li a").removeClass().addClass("nav-link text-tema p-0");
+//footer 3
+$("#menu-footer-3").removeClass().addClass("navbar-nav m-0");
+$("#menu-footer-3 li").removeClass().addClass("nav-item");
+$("#menu-footer-3 li a").removeClass().addClass("nav-link text-tema p-0");
 });

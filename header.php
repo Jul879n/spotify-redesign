@@ -30,11 +30,26 @@
 		<header id="masthead" class="site-header">
 			<div class="offcanvas offcanvas-end tema menu-offcanvas rounded-2" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
 				<div class="offcanvas-header">
-					<h5 class="offcanvas-title text-tema-titulo" id="offcanvasRightLabel">Offcanvas right</h5>
-					<button type="button" class="btn-close bg-tema" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					<?php the_custom_logo();?>
+					<button type="button" class="btn bg-tema d-flex justify-content-center align-items-center" data-bs-dismiss="offcanvas" aria-label="Close"><i class="text-tema fs-4 fa-solid fa-xmark"></i></button>
 				</div>
 				<div class="offcanvas-body text-tema">
-					...
+					<div class="d-flex flex-column h-100 justify-content-between">
+						<?php if (is_active_sidebar('navegacion')):
+							dynamic_sidebar('navegacion');
+						endif; ?>
+						<?php if (is_active_sidebar('nav-central')):
+							dynamic_sidebar('nav-central');
+						endif; ?>
+						
+						<div class="w-100">
+						<?php if (is_active_sidebar('nav-final')):
+							dynamic_sidebar('nav-final');
+						endif; ?>
+						<button class="btn bg-tema w-100"><span class="text-tema"><i class="fa-solid fa-globe me-2"></i> Español de Latinoamérica</span></button>
+						</div>
+						
+					</div>
 				</div>
 			</div>
 		</header><!-- #masthead -->

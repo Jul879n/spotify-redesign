@@ -11,7 +11,7 @@
 ?>
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('row'); ?>>
-    <div class="col-12 col-sm-3 d-flex flex-column align-items-center">
+    <div class="col-12 col-sm-3 d-flex flex-column ">
         <h1 class="text-tema-titulo"><?php echo get_the_title() ?></h1>
         <img class="rounded-2 mb-3" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>" alt="..">
         <span class="text-tema"><?php echo the_content() ?></span>
