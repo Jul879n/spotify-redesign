@@ -264,33 +264,110 @@ jQuery(document).ready(function ($) {
 
   //reproductor
   var posicion = 0;
+  var repetir = false;
+  var mix = false;
+  var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  var actual = "";
   function cargarCancion() {
     var audioCancion = $('#contenido .song').eq(posicion).data('src');
     var nombre = $('#contenido .song').eq(posicion).data('title');
     var artista = $('#contenido .song').eq(posicion).data('artista');
     var imagen = $('#contenido .song').eq(posicion).data('img');
-
     // Colocar los valores en los elementos correspondientes del reproductor de audio
     $('#info-reproduccion img').attr('src', imagen);
-    $('#info-reproduccion audio source').attr('src', audioCancion);
+    $('#info-reproduccion audio').attr('src', audioCancion);
     $('#info-reproduccion #titulo-cancion').text(nombre);
     $('#info-reproduccion #artista-cancion').text(artista);
     $("#info-reproduccion .efecto-texto").codex({
       duration: 680,
     });
   }
-  $(".siguiente").click(function () {
-    posicion++;
+  $("#play").click(function () {
+    var audio = $("#cancion");
+    var icono = $(this).find("i");
+    if (icono.hasClass("fa-circle-pause")) {
+      audio[0].pause();
+      icono.removeClass("fa-circle-pause").addClass("fa-circle-play");
+    } else {
+      audio[0].play();
+      icono.removeClass("fa-circle-play").addClass("fa-circle-pause");
+    }
+  });
+  //siguiente cancion
+  $("#siguiente").click(function () {
+    if (mix) {
+      posicion = Math.floor(Math.random() * nums.length);
+    } else {
+      posicion++;
+    }
     cargarCancion();
+    $("#cancion")[0].play();
+    $("#play").find("i").removeClass("fa-circle-play").addClass("fa-circle-pause");
+    $("#repetir").removeClass("bg-tema");
+    repetir = false;
   });
-  $(".atras").click(function () {
-    posicion--;
+  //cancion anterrior
+  $("#atras").click(function () {
+    if (mix) {
+      posicion = Math.floor(Math.random() * nums.length);
+    } else {
+      posicion--;
+    }
     cargarCancion();
+    $("#cancion")[0].play();
+    $("#play").find("i").removeClass("fa-circle-play").addClass("fa-circle-pause");
+    $("#repetir").removeClass("bg-tema");
+    repetir = false;
   });
-  $('.corazon').click(function () {
-    $(this).find('i').removeClass("fa-regular fa-heart").addClass("fa-solid fa-heart");
+  //mezclar
+  $("#mix").click(function () {
+    $(this).toggleClass("bg-tema");
+    $("#repetir").removeClass("bg-tema");
+    mix = !mix;
   });
-//nav
+  $("#repetir").click(function () {
+    $(this).toggleClass("bg-tema");
+    $("#mix").removeClass("bg-tema");
+    repetir = !repetir;
+  });
+  //tiempo reproduccion
+  $("#cancion").on("timeupdate", function () {
+    var audio = this;
+    $("#tiempo-reproduccion").val(audio.currentTime);
+    $("#tiempo-actual").text(formatTime(audio.currentTime));
+    $("#duracion").text(formatTime(audio.duration));
+  });
+  function formatTime(time) {
+    var minutosTotales = Math.floor(time / 60);
+    var segundosTotales = Math.floor(time % 60);
+    var minutos = Math.floor(minutosTotales % 60);
+    var segundos = segundosTotales < 10 ? "0" + segundosTotales : segundosTotales;
+    return minutos + ":" + segundos;
+  }
+  // Agregar evento "input" al input para permitir al usuario seleccionar una posición en la canción
+  $("#tiempo-reproduccion").on("input", function () {
+    var audio = $("#cancion")[0];
+    audio.currentTime = $(this).val();
+    $("#tiempo-actual").text(formatTime(audio.currentTime));
+  });
+  //siguiente automatico
+  $("#cancion").on("ended", function () {
+    if (repetir) {
+      $("#cancion")[0].play();
+    } else {
+      posicion++;
+      cargarCancion();
+      $("#cancion")[0].play();
+      $("#play").find("i").removeClass("fa-circle-play").addClass("fa-circle-pause");
+    }
+  });
+  //me gusta
+  $(document).on("click", ".corazon", function() {
+    console.log("me gusta no se ve");
+    $(this).find("i").toggleClass("fa-regular fa-heart fa-solid fa-heart");
+    console.log("me gusta");
+  });
+  //nav
   $(".custom-logo").removeClass().addClass("w-75 mt-2")
   $("#menu-nav").removeClass().addClass("navbar-nav m-0");
   $("#menu-nav li").removeClass().addClass("nav-item");
@@ -300,7 +377,7 @@ jQuery(document).ready(function ($) {
   $("#menu-nav li").eq(2).find("a").prepend('<i class="fa-solid fa-book text-tema me-2"></i>');
   $("#menu-nav li").eq(3).find("a").prepend('<i class="fa-solid fa-square-xmark text-tema me-2"></i>');
   $("#menu-nav li").eq(4).find("a").prepend('<i class="fa-solid fa-heart text-tema me-2"></i>');
-//nav central
+  //nav central
   $("#menu-nav-central").removeClass().addClass("navbar-nav m-0");
   $("#menu-nav-central li").removeClass().addClass("nav-item");
   $("#menu-nav-central li a").removeClass().addClass("nav-link text-tema");
@@ -309,16 +386,16 @@ jQuery(document).ready(function ($) {
   $("#menu-nav-final").removeClass().addClass("navbar-nav m-0 flex-row row");
   $("#menu-nav-final li").removeClass().addClass("nav-item col-6");
   $("#menu-nav-final li a").removeClass().addClass("nav-link text-tema text-pequeno");
-//footer
-$("#menu-footer-1").removeClass().addClass("navbar-nav m-0");
-$("#menu-footer-1 li").removeClass().addClass("nav-item");
-$("#menu-footer-1 li a").removeClass().addClass("nav-link text-tema p-0");
-//footer 2
-$("#menu-footer-2").removeClass().addClass("navbar-nav m-0");
-$("#menu-footer-2 li").removeClass().addClass("nav-item");
-$("#menu-footer-2 li a").removeClass().addClass("nav-link text-tema p-0");
-//footer 3
-$("#menu-footer-3").removeClass().addClass("navbar-nav m-0");
-$("#menu-footer-3 li").removeClass().addClass("nav-item");
-$("#menu-footer-3 li a").removeClass().addClass("nav-link text-tema p-0");
+  //footer
+  $("#menu-footer-1").removeClass().addClass("navbar-nav m-0");
+  $("#menu-footer-1 li").removeClass().addClass("nav-item");
+  $("#menu-footer-1 li a").removeClass().addClass("nav-link text-tema p-0");
+  //footer 2
+  $("#menu-footer-2").removeClass().addClass("navbar-nav m-0");
+  $("#menu-footer-2 li").removeClass().addClass("nav-item");
+  $("#menu-footer-2 li a").removeClass().addClass("nav-link text-tema p-0");
+  //footer 3
+  $("#menu-footer-3").removeClass().addClass("navbar-nav m-0");
+  $("#menu-footer-3 li").removeClass().addClass("nav-item");
+  $("#menu-footer-3 li a").removeClass().addClass("nav-link text-tema p-0");
 });

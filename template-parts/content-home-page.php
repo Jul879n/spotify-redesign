@@ -64,25 +64,24 @@
 						if (!empty($image)) : ?>
 							<img class="mitad rounded-3 placeholder transparente" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
 						<?php endif; ?>
-						<audio style="display: none;" id="cancion" controls>
-							<source src="" type="audio/mp3">
+						<audio style="display: none;"  id="cancion" src="" controls>
 						</audio>
 						<form class="mt-3 mitad transparente" action="">
 							<div>
-								<h5 class="text-tema-titulo efecto-texto" id="titulo-cancion">Canción 1</h5>
-								<h6 class="text-tema efecto-texto" id="artista-cancion">Artista 1</h6>
+								<h5 class="text-tema-titulo efecto-texto" id="titulo-cancion">Canción</h5>
+								<h6 class="text-tema efecto-texto" id="artista-cancion">Artista</h6>
 							</div>
-							<input class="w-100 border-0 form-range" type="range" name="tiempo-reproduccion" id="tiempo-reproduccion">
+							<input class="w-100 border-0" type="range" name="tiempo-reproduccion" id="tiempo-reproduccion">
 							<div class="d-flex justify-content-between">
 								<span class="text-tema efecto-texto" id="tiempo-actual">00:00</span>
 								<span class="text-tema efecto-texto" id="duracion">00:00</span>
 							</div>
 							<div class="d-flex justify-content-around" id="botones-izquierda">
-								<button class="btn-reproductor btn d-flex justify-content-center align-items-center text-tema mix"><i class="fa-solid fa-shuffle"></i></button>
-								<button class="btn-reproductor btn d-flex justify-content-center align-items-center text-tema atras"><i class="fa-solid fa-backward-step"></i></button>
-								<button class="btn-reproductor btn d-flex justify-content-center align-items-center text-tema fs-1 play"><i class="fa-solid fa-circle-play"></i></button>
-								<button class="btn-reproductor btn d-flex justify-content-center align-items-center text-tema siguiente"><i class="fa-solid fa-forward-step"></i></button>
-								<button class="btn-reproductor btn d-flex justify-content-center align-items-center text-tema repetir"><i class="fa-solid fa-repeat"></i></button>
+								<button id="mix" class="btn-reproductor btn d-flex justify-content-center align-items-center"><i class="text-tema fa-solid fa-shuffle"></i></button>
+								<button id="atras" class="btn-reproductor btn d-flex justify-content-center align-items-center text-tema"><i class="fa-solid fa-backward-step"></i></button>
+								<button id="play" class="btn-reproductor btn d-flex justify-content-center align-items-center text-tema fs-1"><i class="fa-solid fa-circle-play"></i></button>
+								<button id="siguiente" class="btn-reproductor btn d-flex justify-content-center align-items-center text-tema"><i class="fa-solid fa-forward-step"></i></button>
+								<button id="repetir" class="btn-reproductor btn d-flex justify-content-center align-items-center "><i class="text-tema fa-solid fa-repeat"></i></button>
 							</div>
 						</form>
 					</div>

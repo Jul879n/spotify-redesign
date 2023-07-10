@@ -22,7 +22,7 @@
             <span class="text-tema"><?php the_field('duracion'); ?></span>
         </div>
         <div class="w-100 d-flex justify-content-around align-items-center">
-            <button class="btn d-flex justify-content-center align-items-center text-tema fs-2 corazon"><i class="fa-regular fa-heart"></i></button>
+            <button class="corazon btn d-flex justify-content-center align-items-center text-tema fs-2"><i class="fa-regular fa-heart"></i></button>
             <button class="btn d-flex justify-content-center align-items-center text-tema fs-2"><i class="fa-solid fa-ellipsis"></i></button>
         </div>
     </div>
