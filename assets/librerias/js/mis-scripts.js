@@ -63,6 +63,7 @@ jQuery(document).ready(function ($) {
   var inicioArtista = "";
   var clickLoop = false;
   var clickCancion = false;
+  var clickArtista = false;
   //navegacion playlist
   $(document).on("click", ".loop", function (event) {
     clickLoop = true;
@@ -102,7 +103,7 @@ jQuery(document).ready(function ($) {
   });
   //navegacion cancion
   $(document).on("click", ".perfil", function (event) {
-    clickCancion = true;
+    clickArtista = true;
     inicioArtista = $("#artista .card-body").html();
     event.preventDefault();
     var href = $(this).attr("href");
@@ -135,7 +136,11 @@ jQuery(document).ready(function ($) {
         $(this).html(inicioCancion).fadeIn("fast"); // Restaura el contenido anterior
       });
     }
-
+    if (clickArtista) {
+      $("#artista .card-body").fadeOut("fast", function () {
+        $(this).html(inicioArtista).fadeIn("fast"); // Restaura el contenido anterior
+      });
+    }
   });
 
   $(".nombre-artista").click(function () {
