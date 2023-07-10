@@ -31,7 +31,7 @@
 	</div>
 	<div id="fondo" class="container-fluid ">
 		<div class="row grid-stack">
-			<div id="card-menu" class="grid-stack-item col-12 col-sm-4 gs-4" gs-w="3">
+			<div id="card-menu" class="grid-stack-item col-12 col-sm-4 gs-4" gs-w="3" gs-no-resize="true">
 				<div id="menu" class="grid-stack-item-content card border-0 tema he-100">
 					<div class="card-body pt-0 pb-0 d-flex justify-content-between align-items-center placeholder">
 						<span class="spotify text-tema transparente"><i class="fa-brands fa-spotify"></i></span>
@@ -44,7 +44,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="registrate" class="grid-stack-item placeholder-glow col-12 col-sm-8" gs-w="9">
+			<div id="registrate" class="grid-stack-item placeholder-glow col-12 col-sm-8" gs-w="9" gs-no-resize="true">
 				<div class="grid-stack-item-content card tema border-0">
 					<div class="card-body placeholder d-flex align-items-center justify-content-between he-100">
 						<div class="d-flex flex-column w-75">
@@ -56,7 +56,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="izquierda" class="grid-stack-item placeholder-glow col-12 col-sm-4" gs-w="4" gs-h="5">
+			<div id="izquierda" class="grid-stack-item placeholder-glow col-12 col-sm-4" gs-w="4" gs-h="5" gs-no-resize="true">
 				<div id="reproductor" class="grid-stack-item-content card border-0 tema bg-secondary text-tema he-100">
 					<div id="info-reproduccion" class="card-body d-flex flex-column align-items-center justify-content-center placeholder">
 						<?php
@@ -88,7 +88,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="principal" class="grid-stack-item placeholder-glow col-12 col-sm-8" gs-w="8" gs-h="5">
+			<div id="principal" class="grid-stack-item placeholder-glow col-12 col-sm-8" gs-w="8" gs-h="5" gs-no-resize="true">
 				<div id="contenido" class="grid-stack-item-content card border-0 tema bg-secondary text-tema he-100">
 					<div class="card-body placeholder container-fluid position-relative">
 						<?php include get_template_directory() . '/assets/modulos/modulo-playlists/loop-enfoque.php'; ?>
@@ -96,14 +96,14 @@
 					</div>
 				</div>
 			</div>
-			<div id="artista" class="grid-stack-item placeholder-glow col-12 col-sm-6" gs-w="6" gs-h="4">
+			<div id="artista" class="grid-stack-item placeholder-glow col-12 col-sm-6" gs-w="6" gs-h="4" gs-no-resize="true">
 				<div class="grid-stack-item-content card border-0 tema bg-secondary he-100">
 					<div class="card-body placeholder d-flex align-items-center justify-content-center">
 						<h2 class="trasparente no-hay text-tema"><i class="fa-solid fa-compact-disc"></i></h2>
 					</div>
 				</div>
 			</div>
-			<div id="info-cancion" class="grid-stack-item placeholder-glow col-12 col-sm-6" gs-w="6" gs-h="4">
+			<div id="info-cancion" class="grid-stack-item placeholder-glow col-12 col-sm-6" gs-w="6" gs-h="4" gs-no-resize="true">
 				<div class="grid-stack-item-content card border-0 tema bg-secondary he-100">
 					<div class="card-body placeholder d-flex align-items-center justify-content-center">
 						<h2 class="transparente no-hay text-tema"><i class="fa-solid fa-compact-disc"></i></h2>
