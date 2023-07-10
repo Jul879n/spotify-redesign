@@ -296,9 +296,10 @@ jQuery(document).ready(function ($) {
   $("#menu-nav li").removeClass().addClass("nav-item");
   $("#menu-nav li a").removeClass().addClass("nav-link text-tema");
   $("#menu-nav li").eq(0).find("a").prepend('<i class="fa-solid fa-house tex-tema me-2"></i>');
-  $("#menu-nav li").eq(1).find("a").prepend('<i class="fa-solid fa-book text-tema me-2"></i>');
-  $("#menu-nav li").eq(2).find("a").prepend('<i class="fa-solid fa-square-xmark text-tema me-2"></i>');
-  $("#menu-nav li").eq(3).find("a").prepend('<i class="fa-solid fa-heart text-tema me-2"></i>');
+  $("#menu-nav li").eq(1).find("a").prepend('<i class="fa-solid fa-magnifying-glass text-tema me-2"></i>');
+  $("#menu-nav li").eq(2).find("a").prepend('<i class="fa-solid fa-book text-tema me-2"></i>');
+  $("#menu-nav li").eq(3).find("a").prepend('<i class="fa-solid fa-square-xmark text-tema me-2"></i>');
+  $("#menu-nav li").eq(4).find("a").prepend('<i class="fa-solid fa-heart text-tema me-2"></i>');
 //nav central
   $("#menu-nav-central").removeClass().addClass("navbar-nav m-0");
   $("#menu-nav-central li").removeClass().addClass("nav-item");
