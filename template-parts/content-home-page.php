@@ -67,9 +67,9 @@
 						<audio style="display: none;"  id="cancion" src="" controls>
 						</audio>
 						<form class="mt-3 mitad transparente" action="">
-							<div>
-								<h5 class="text-tema-titulo efecto-texto" id="titulo-cancion">Canción</h5>
-								<h6 class="text-tema efecto-texto" id="artista-cancion">Artista</h6>
+							<div class="d-flex flex-column">
+								<a href="" class="fs-4 text-tema-titulo efecto-texto" id="titulo-cancion">Canción</a>
+								<a href="" class="text-tema efecto-texto" id="artista-cancion">Artista</a>
 							</div>
 							<input class="w-100 border-0" type="range" name="tiempo-reproduccion" id="tiempo-reproduccion">
 							<div class="d-flex justify-content-between">

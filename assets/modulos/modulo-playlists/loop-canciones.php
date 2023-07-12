@@ -48,19 +48,19 @@
 							<img class="img-miniatura w-100" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>" alt="..">
 						</div>
 						<div class="col-11 col-sm-3" id="playList">
-							<span class="song" data-src="<?php the_field('enlace_cancion'); ?>" data-title="<?php echo get_the_title() ?>" data-artista="<?php the_field('perfil'); ?>" data-img="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>"></span>
-							<a class="enlace-cancion text-tema-titulo" href="<?php the_permalink() ?>"><?php echo get_the_title() ?></a>
+							<span class="song" data-info="<?php the_permalink() ?>" data-enlace-artista="<?php echo get_home_url(); ?>/artistas/<?php echo $perfil; ?>" data-src="<?php the_field('enlace_cancion'); ?>" data-title="<?php echo get_the_title() ?>" data-artista="<?php the_field('perfil'); ?>" data-img="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>"></span>
+							<a class="enlace-cancion text-tema-titulo efecto-texto" href="<?php the_permalink() ?>"><?php echo get_the_title() ?></a>
 							<br>
-							<a class="perfil text-tema" href="<?php echo get_home_url(); ?>/artistas/<?php echo $perfil; ?>"><?php the_field('perfil'); ?></a>
+							<a class="perfil text-tema efecto-texto" href="<?php echo get_home_url(); ?>/artistas/<?php echo $perfil; ?>"><?php the_field('perfil'); ?></a>
 						</div>
 						<div class="col-2 no-visible">
-							<span class="text-tema"><?php the_field('album'); ?></span>
+							<span class="text-tema efecto-texto"><?php the_field('album'); ?></span>
 						</div>
 						<div class="col-3 no-visible">
-							<span class="text-tema"><?php echo the_content() ?></span>
+							<span class="text-tema efecto-texto"><?php echo the_content() ?></span>
 						</div>
 						<div class="col-2 no-visible">
-							<span class="text-tema"><?php the_excerpt() ?></span>
+							<span class="text-tema efecto-texto"><?php the_excerpt() ?></span>
 						</div>
 					</div>
 				</div>

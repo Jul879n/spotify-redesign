@@ -53,6 +53,20 @@ jQuery(document).ready(function ($) {
       });
     });
   });
+  // Obtenemos la altura y anchura de la ventana del navegador
+  var alturaVentana = $(window).height();
+  var anchoVentana = $(window).width();
+  // Obtenemos la altura y anchura del elemento que queremos centrar
+  var alturaSelector = $("#selector-tema").outerHeight();
+  var anchoSelector = $("#selector-tema").outerWidth();
+  // Calculamos la posición en la que debemos mover el elemento para centrarlo
+  var margenSuperior = (alturaVentana - alturaSelector) / 2;
+  var margenIzquierda = (anchoVentana - anchoSelector) / 2;
+  // Movemos el elemento al centro de la pantalla
+  $("#selector-tema").css({
+    "margin-top": margenSuperior,
+    "margin-left": margenIzquierda,
+  });
   //evitar formulario
   $("form").on("submit", function (event) {
     event.preventDefault();
@@ -73,12 +87,15 @@ jQuery(document).ready(function ($) {
     $("#contenido .card-body").fadeOut("fast", function () {
       $(this).load(href + " .playlists", function () {
         $(this).fadeIn("fast");
+        $("#contenido .efecto-texto").codex({
+          duration: 500,
+        });
         cargarCancion();
       });
     });
   });
   //navegacion cancion
-  $(document).on("click", ".enlace-cancion", function (event) {
+  $(document).on("click", ".enlace-cancion, #titulo-cancion", function (event) {
     clickCancion = true;
     inicioCancion = $("#info-cancion .card-body").html();
     event.preventDefault();
@@ -96,13 +113,13 @@ jQuery(document).ready(function ($) {
           scrollTop: $("#info-cancion").offset().top
         }, 10);
         $("#info-cancion .efecto-texto").codex({
-          duration: 800,
+          duration: 500,
         });
       });
     });
   });
   //navegacion cancion
-  $(document).on("click", ".perfil", function (event) {
+  $(document).on("click", ".perfil, #artista-cancion", function (event) {
     clickArtista = true;
     inicioArtista = $("#artista .card-body").html();
     event.preventDefault();
@@ -120,7 +137,7 @@ jQuery(document).ready(function ($) {
           scrollTop: $("#artista").offset().top
         }, 10);
         $("#artista .efecto-texto").codex({
-          duration: 800,
+          duration: 500,
         });
       });
     });
@@ -141,36 +158,6 @@ jQuery(document).ready(function ($) {
         $(this).html(inicioArtista).fadeIn("fast"); // Restaura el contenido anterior
       });
     }
-  });
-
-  $(".nombre-artista").click(function () {
-    $("#artista").removeClass("no-ver");
-    $.get(
-      "https://laraya.laboratoriodiseno.cl/spotify-redesign/politica-privacidad/",
-      function (data, status) {
-        $("#artista .card-body").html(data);
-        $("html, body").animate(
-          {
-            scrollTop: $("#artista").offset().top,
-          },
-          1000
-        );
-      }
-    );
-  });
-  // Obtenemos la altura y anchura de la ventana del navegador
-  var alturaVentana = $(window).height();
-  var anchoVentana = $(window).width();
-  // Obtenemos la altura y anchura del elemento que queremos centrar
-  var alturaSelector = $("#selector-tema").outerHeight();
-  var anchoSelector = $("#selector-tema").outerWidth();
-  // Calculamos la posición en la que debemos mover el elemento para centrarlo
-  var margenSuperior = (alturaVentana - alturaSelector) / 2;
-  var margenIzquierda = (anchoVentana - anchoSelector) / 2;
-  // Movemos el elemento al centro de la pantalla
-  $("#selector-tema").css({
-    "margin-top": margenSuperior,
-    "margin-left": margenIzquierda,
   });
   //girar discos
   function girar() {
@@ -270,12 +257,16 @@ jQuery(document).ready(function ($) {
   var actual = "";
   function cargarCancion() {
     var audioCancion = $('#contenido .song').eq(posicion).data('src');
+    var infoCancion = $('#contenido .song').eq(posicion).data('info');
     var nombre = $('#contenido .song').eq(posicion).data('title');
     var artista = $('#contenido .song').eq(posicion).data('artista');
+    var enlaceArtista = $('#contenido .song').eq(posicion).data('enlace-artista');
     var imagen = $('#contenido .song').eq(posicion).data('img');
     // Colocar los valores en los elementos correspondientes del reproductor de audio
     $('#info-reproduccion img').attr('src', imagen);
     $('#info-reproduccion audio').attr('src', audioCancion);
+    $('#info-reproduccion #titulo-cancion').attr('href', infoCancion);
+    $('#info-reproduccion #artista-cancion').attr('href', enlaceArtista);
     $('#info-reproduccion #titulo-cancion').text(nombre);
     $('#info-reproduccion #artista-cancion').text(artista);
     $("#info-reproduccion .efecto-texto").codex({
