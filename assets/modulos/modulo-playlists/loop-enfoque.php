@@ -11,7 +11,7 @@
 </script>
 
 <!-- contenido playlists -->
-<div class="seccion-enfoque container">
+<div class="seccion-enfoque container transparente">
 <h2 class="text-tema-titulo efecto-texto">Enfoque</h2>
     <div id="carrusel-playlist">
        
