@@ -41,25 +41,25 @@
 				?>
 				<div class="container-fluid p-0">
 					<div class="row mt-3 lista">
-						<div class="col-1 encimera no-visible">
+						<div class="col-sm-1 encimera no-visible">
 							<span class="text-tema"><?php echo $numero; ?></span>
 						</div>
-						<div class="col-1 p-0">
+						<div class="col-2 col-sm-1 p-0">
 							<img class="img-miniatura w-100" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>" alt="..">
 						</div>
-						<div class="col-11 col-sm-3" id="playList">
+						<div class="col-10 col-sm-3" id="playList">
 							<span class="song" data-info="<?php the_permalink() ?>" data-enlace-artista="<?php echo get_home_url(); ?>/artistas/<?php echo $perfil; ?>" data-src="<?php the_field('enlace_cancion'); ?>" data-title="<?php echo get_the_title() ?>" data-artista="<?php the_field('perfil'); ?>" data-img="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>"></span>
 							<a class="enlace-cancion text-tema-titulo efecto-texto" href="<?php the_permalink() ?>"><?php echo get_the_title() ?></a>
 							<br>
 							<a class="perfil text-tema efecto-texto" href="<?php echo get_home_url(); ?>/artistas/<?php echo $perfil; ?>"><?php the_field('perfil'); ?></a>
 						</div>
-						<div class="col-2 no-visible">
+						<div class="col-sm-2 no-visible">
 							<span class="text-tema efecto-texto"><?php the_field('album'); ?></span>
 						</div>
-						<div class="col-3 no-visible">
+						<div class="col-sm-3 no-visible">
 							<span class="text-tema efecto-texto"><?php echo the_content() ?></span>
 						</div>
-						<div class="col-2 no-visible">
+						<div class="col-sm-2 no-visible">
 							<span class="text-tema efecto-texto"><?php the_excerpt() ?></span>
 						</div>
 					</div>
