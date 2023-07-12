@@ -87,9 +87,6 @@ jQuery(document).ready(function ($) {
     $("#contenido .card-body").fadeOut("fast", function () {
       $(this).load(href + " .playlists", function () {
         $(this).fadeIn("fast");
-        $("#contenido .efecto-texto").codex({
-          duration: 500,
-        });
         cargarCancion();
       });
     });
@@ -112,9 +109,6 @@ jQuery(document).ready(function ($) {
         $('html, body').animate({
           scrollTop: $("#info-cancion").offset().top
         }, 10);
-        $("#info-cancion .efecto-texto").codex({
-          duration: 500,
-        });
       });
     });
   });
@@ -136,9 +130,6 @@ jQuery(document).ready(function ($) {
         $('html, body').animate({
           scrollTop: $("#artista").offset().top
         }, 10);
-        $("#artista .efecto-texto").codex({
-          duration: 500,
-        });
       });
     });
   });
