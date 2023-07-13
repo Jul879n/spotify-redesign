@@ -377,10 +377,9 @@ jQuery(document).ready(function ($) {
   $("#menu-footer-3").removeClass().addClass("navbar-nav m-0");
   $("#menu-footer-3 li").removeClass().addClass("nav-item");
   $("#menu-footer-3 li a").removeClass().addClass("nav-link text-tema p-0");
-
+  //cargar cancion directamente
   $(document).on('click', '.elemento-cancion', function() {
     posicion = $(this).index();
-    console.log("funciona? " + posicion);
     cargarCancion();
   });
 });
