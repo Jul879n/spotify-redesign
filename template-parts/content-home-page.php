@@ -48,7 +48,7 @@
 				<div class="grid-stack-item-content card tema border-0">
 					<div class="card-body placeholder d-flex align-items-center justify-content-between he-100">
 						<div class="d-flex flex-column w-75">
-							<span class="transparente text-tema nombre-artista efecto-texto text-uppercase"><?php echo esc_html( get_field('titulo') ); ?></span>
+							<span class="fw-bold transparente text-tema nombre-artista efecto-texto text-uppercase"><?php echo esc_html( get_field('titulo') ); ?></span>
 							<span class="transparente text-tema nombre-artista efecto-texto"><?php echo esc_html( get_field('info') ); ?></span>
 						</div>
 						<span><button class="registrarte btn bg-tema transparente efecto-texto"><?php echo esc_html( get_field('texto_boton') ); ?></button></span>
@@ -68,7 +68,7 @@
 						</audio>
 						<form class="mt-3 mitad transparente" action="">
 							<div class="d-flex flex-column">
-								<a href="" class="fs-4 text-tema-titulo efecto-texto" id="titulo-cancion">Canción</a>
+								<a href="" class="fw-bold fs-4 text-tema-titulo efecto-texto" id="titulo-cancion">Canción</a>
 								<a href="" class="text-tema efecto-texto" id="artista-cancion">Artista</a>
 							</div>
 							<input class="w-100 border-0" type="range" name="tiempo-reproduccion" id="tiempo-reproduccion" max="100">
