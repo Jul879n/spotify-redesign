@@ -346,9 +346,9 @@ jQuery(document).ready(function ($) {
   $(document).on("click", ".corazon", function () {
     $(this).find("i").toggleClass("fa-regular fa-heart fa-solid fa-heart");
   });
-  $(".img-cancion").on("click", function () {
+  $(".elemento-cancion").on("click", function () {
     console.log("hola");
-    posicion = $(this).parent().parent().parent().index();
+    posicion = $(this).index();
     console.log(posicion);
     cargarCancion();
   });

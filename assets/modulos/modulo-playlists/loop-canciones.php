@@ -45,7 +45,7 @@
 							<span class="text-tema"><?php echo $numero; ?></span>
 						</div>
 						<div class="col-2 col-sm-1 p-0">
-							<img  class="img-miniatura w-100 img-cancion" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>" alt="..">
+							<img  class="img-miniatura w-100" src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>" alt="..">
 						</div>
 						<div class="col-10 col-sm-3" id="playList">
 							<span class="song" data-info="<?php the_permalink() ?>" data-enlace-artista="<?php echo get_home_url(); ?>/artistas/<?php echo $perfil; ?>" data-src="<?php the_field('enlace_cancion'); ?>" data-title="<?php echo get_the_title() ?>" data-artista="<?php the_field('perfil'); ?>" data-img="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>"></span>
