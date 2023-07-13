@@ -89,7 +89,7 @@
 			</div>
 			<div id="principal" class="grid-stack-item placeholder-glow col-12 col-sm-8" gs-w="8" gs-h="5" gs-no-resize="true">
 				<div id="contenido" class="grid-stack-item-content card border-0 tema bg-secondary text-tema he-100">
-					<div class="card-body placeholder container-fluid position-relative">
+					<div class="card-body placeholder container-fluid position-relative d-flex flex-column justify-content-around">
 						<?php include get_template_directory() . '/assets/modulos/modulo-playlists/loop-enfoque.php'; ?>
 						<?php include get_template_directory() . '/assets/modulos/modulo-playlists/loop-playlists-spotify.php'; ?>
 					</div>
