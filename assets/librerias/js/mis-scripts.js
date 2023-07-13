@@ -346,10 +346,6 @@ jQuery(document).ready(function ($) {
   $(document).on("click", ".corazon", function () {
     $(this).find("i").toggleClass("fa-regular fa-heart fa-solid fa-heart");
   });
-  $(".elemento-cancion").click (function () {
-    console.log("hola");
-    
-  });
   //nav
   $(".custom-logo").removeClass().addClass("w-75 mt-2")
   $("#menu-nav").removeClass().addClass("navbar-nav m-0");
@@ -381,4 +377,9 @@ jQuery(document).ready(function ($) {
   $("#menu-footer-3").removeClass().addClass("navbar-nav m-0");
   $("#menu-footer-3 li").removeClass().addClass("nav-item");
   $("#menu-footer-3 li a").removeClass().addClass("nav-link text-tema p-0");
+
+  $(".elemento-cancion").click(function () {
+    posicion = $(this).index();
+    console.log("funciona? " + posicion);
+  });
 });
