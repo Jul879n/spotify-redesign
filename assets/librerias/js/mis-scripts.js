@@ -32,16 +32,16 @@ jQuery(document).ready(function ($) {
 
   $("#tema-blanco").click(function () {
     $("body").removeClass("tema-oscuro tema-amoled").addClass("tema-blanco");
-    $("#confirmar").removeClass("disabled");
+    $("#confirmar").removeClass("disabled btn-primary").addClass("bg-tema");
   });
 
   $("#tema-oscuro").click(function () {
     $("body").removeClass("tema-claro tema-amoled").addClass("tema-oscuro");
-    $("#confirmar").removeClass("disabled");
+    $("#confirmar").removeClass("disabled btn-primary").addClass("bg-tema");
   });
   $("#tema-amoled").click(function () {
     $("body").removeClass("tema-oscuro tema-claro").addClass("tema-amoled");
-    $("#confirmar").removeClass("disabled");
+    $("#confirmar").removeClass("disabled btn-primary").addClass("bg-tema");
   });
   $("#confirmar").click(function () {
     $("#selector-tema").fadeOut("1000", function () {
@@ -329,7 +329,7 @@ jQuery(document).ready(function ($) {
   // Agregar evento "input" al input para permitir al usuario seleccionar una posición en la canción
   $("#tiempo-reproduccion").on("input", function () {
     var audio = $("#cancion")[0];
-    audio.currentTime =($(this).val() / 100) * audio.duration;
+    audio.currentTime = ($(this).val() / 100) * audio.duration;
     $("#tiempo-actual").text(formatTime(audio.currentTime));
   });
   //siguiente automatico
@@ -344,7 +344,7 @@ jQuery(document).ready(function ($) {
     }
   });
   //me gusta
-  $(document).on("click", ".corazon", function() {
+  $(document).on("click", ".corazon", function () {
     console.log("me gusta no se ve");
     $(this).find("i").toggleClass("fa-regular fa-heart fa-solid fa-heart");
     console.log("me gusta");

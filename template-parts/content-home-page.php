@@ -13,7 +13,7 @@
 <div id="post-<?php the_ID(); ?>" <?php post_class('user-select-none'); ?>>
 	<div id="selector-tema">
 		<div class="container h-100">
-			<div class="row h-100 align-items-center">
+			<div class="row h-100 align-items-center p-3">
 				<h1>Selecciona un Tema</h1>
 				<div class="w-100 d-flex justify-content-around">
 					<div id="tema-blanco" class="cajas-temas seleccion">

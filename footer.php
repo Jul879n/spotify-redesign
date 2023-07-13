@@ -11,7 +11,7 @@
 
 ?>
 
-<footer id="colophon" class="card-body placeholder container">
+<footer id="colophon" class="card-body placeholder">
 	<div class="row transparente">
 		<?php if (is_active_sidebar('footer1')):
 							dynamic_sidebar('footer1');
