@@ -378,8 +378,8 @@ jQuery(document).ready(function ($) {
   $("#menu-footer-3 li").removeClass().addClass("nav-item");
   $("#menu-footer-3 li a").removeClass().addClass("nav-link text-tema p-0");
   //cargar cancion directamente
-  $(document).on('click', '.elemento-cancion', function() {
-    posicion = $(this).index();
+  $(document).on('click', '.img-cancion', function() {
+    posicion = $(this).parent().parent().parent().index();
     cargarCancion();
   });
 });
