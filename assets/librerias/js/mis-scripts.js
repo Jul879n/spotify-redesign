@@ -84,7 +84,7 @@ jQuery(document).ready(function ($) {
     contenidoAnterior = $("#contenido .card-body").html();
     event.preventDefault();
     var href = $(this).attr("href");
-    $("#contenido .card-body").fadeOut("fast", function () {
+    $("#contenido .card-body").fadeOut("slow", function () {
       $(this).load(href + " .playlists", function () {
         $(this).fadeIn("fast");
         cargarCancion();
