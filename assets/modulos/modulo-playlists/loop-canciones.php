@@ -49,7 +49,7 @@
 						</div>
 						<div class="col-10 col-sm-3" id="playList">
 							<span class="song" data-info="<?php the_permalink() ?>" data-enlace-artista="<?php echo get_home_url(); ?>/artistas/<?php echo $perfil; ?>" data-src="<?php the_field('enlace_cancion'); ?>" data-title="<?php echo get_the_title() ?>" data-artista="<?php the_field('perfil'); ?>" data-img="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>"></span>
-							<a class="enlace-cancion text-tema-titulo efecto-texto" href="<?php the_permalink() ?>"><?php echo get_the_title() ?></a>
+							<a class="fw-bold enlace-cancion text-tema-titulo efecto-texto" href="<?php the_permalink() ?>"><?php echo get_the_title() ?></a>
 							<br>
 							<a class="perfil text-tema efecto-texto" href="<?php echo get_home_url(); ?>/artistas/<?php echo $perfil; ?>"><?php the_field('perfil'); ?></a>
 						</div>

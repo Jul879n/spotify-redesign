@@ -258,7 +258,9 @@ a
 {
   display: none;
 }
-
+.elemento-cancion{
+  cursor: pointer;
+}
 .titulo-cancion
 {
   font-size: 52px;

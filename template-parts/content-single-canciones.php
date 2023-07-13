@@ -22,7 +22,7 @@
         <span class="efecto-texto text-tema ">Canción</span>
         <h2 class="efecto-texto text-tema-titulo titulo-cancion"><?php echo get_the_title() ?></h2>
         <div class="d-flex flex-column info">
-           <a href="" id="artista-song" class="efecto-texto text-tema me-2"><?php the_field('perfil'); ?></a>
+           <span id="artista-song" class="efecto-texto text-tema me-2"><?php the_field('perfil'); ?></span>
             <span class="efecto-texto text-tema me-2"><?php the_field('ano'); ?></span>
             <span class="efecto-texto text-tema me-2"><?php the_excerpt(); ?></span>
         </div>
