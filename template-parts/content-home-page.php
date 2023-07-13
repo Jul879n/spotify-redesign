@@ -109,7 +109,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="footer" class="grid-stack-item placeholder-glow col-12" gs-w="12" gs-h="3" gs-no-resize="true">
+			<div id="footer" class="grid-stack-item placeholder-glow col-12" gs-w="12" gs-h="2" gs-no-resize="true">
 				<div class="grid-stack-item-content card border-0 tema bg-secondary he-100">
 					<?php get_footer(); ?>
 				</div>
