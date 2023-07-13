@@ -245,12 +245,11 @@ jQuery(document).ready(function ($) {
   var repetir = false;
   var mix = false;
   var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
   $(".img-cancion").on("click", function () {
-  console.log("hola");
-  posicion = $(this).parent().parent().parent().index();
-  console.log(posicion);
-  cargarCancion();
- });
+    console.log("hola");
+    
+  });
   function cargarCancion() {
     var audioCancion = $('#contenido .song').eq(posicion).data('src');
     var infoCancion = $('#contenido .song').eq(posicion).data('info');
