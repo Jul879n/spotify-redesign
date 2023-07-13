@@ -378,8 +378,8 @@ jQuery(document).ready(function ($) {
   $("#menu-footer-3 li").removeClass().addClass("nav-item");
   $("#menu-footer-3 li a").removeClass().addClass("nav-link text-tema p-0");
 
-  $(".elemento-cancion").click(function () {
-    posicion = $(this).index();
+  jQuery(".elemento-cancion").click(function () {
+    posicion = jQuery(this).index();
     console.log("funciona? " + posicion);
   });
 });
