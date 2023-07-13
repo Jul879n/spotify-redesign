@@ -87,8 +87,8 @@ jQuery(document).ready(function ($) {
     $("#contenido .card-body").fadeOut("slow", function () {
       $("#contenido .card-body").css("opacity", "0");
       $(this).load(href + " .playlists", function () {
+        $("#contenido .card-body").css("opacity", "1");
         $(this).fadeIn("slow");
-        $("#contenido .card-body").css("opacity", "100");
         cargarCancion();
       });
     });
