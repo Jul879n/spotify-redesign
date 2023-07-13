@@ -346,11 +346,9 @@ jQuery(document).ready(function ($) {
   $(document).on("click", ".corazon", function () {
     $(this).find("i").toggleClass("fa-regular fa-heart fa-solid fa-heart");
   });
-  $(".elemento-cancion").on("click", function () {
+  $(".elemento-cancion").click (function () {
     console.log("hola");
-    posicion = $(this).index();
-    console.log(posicion);
-    cargarCancion();
+    
   });
   //nav
   $(".custom-logo").removeClass().addClass("w-75 mt-2")
