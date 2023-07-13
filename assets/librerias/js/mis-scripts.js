@@ -315,7 +315,7 @@ jQuery(document).ready(function ($) {
   //tiempo reproduccion
   $("#cancion").on("timeupdate", function () {
     var audio = this;
-    $("#tiempo-reproduccion").val(audio.currentTime);
+    $("#tiempo-reproduccion").val((this.currentTime / this.duration) * 100);
     $("#tiempo-actual").text(formatTime(audio.currentTime));
     $("#duracion").text(formatTime(audio.duration));
   });
@@ -329,7 +329,7 @@ jQuery(document).ready(function ($) {
   // Agregar evento "input" al input para permitir al usuario seleccionar una posición en la canción
   $("#tiempo-reproduccion").on("input", function () {
     var audio = $("#cancion")[0];
-    audio.currentTime = $(this).val();
+    audio.currentTime =($(this).val() / 100) * audio.duration;
     $("#tiempo-actual").text(formatTime(audio.currentTime));
   });
   //siguiente automatico

@@ -71,7 +71,7 @@
 								<a href="" class="fs-4 text-tema-titulo efecto-texto" id="titulo-cancion">Canción</a>
 								<a href="" class="text-tema efecto-texto" id="artista-cancion">Artista</a>
 							</div>
-							<input class="w-100 border-0" type="range" name="tiempo-reproduccion" id="tiempo-reproduccion">
+							<input class="w-100 border-0" type="range" name="tiempo-reproduccion" id="tiempo-reproduccion" max="100">
 							<div class="d-flex justify-content-between">
 								<span class="text-tema efecto-texto" id="tiempo-actual">00:00</span>
 								<span class="text-tema efecto-texto" id="duracion">00:00</span>
