@@ -85,8 +85,10 @@ jQuery(document).ready(function ($) {
     event.preventDefault();
     var href = $(this).attr("href");
     $("#contenido .card-body").fadeOut("slow", function () {
+      $("#contenido .card-body").css("opacity", "0");
       $(this).load(href + " .playlists", function () {
         $(this).fadeIn("slow");
+        $("#contenido .card-body").css("opacity", "100");
         cargarCancion();
       });
     });
